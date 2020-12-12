@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tailwind Playground</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="dist/articulate.umd.css" type="text/css">
+</head>
+<body>
+    <div>
+        <div id="article"></div>
+
+        <button class="border bg-blue-500 text-white py-1 px-6 rounded-full" onclick="addItem()">Add Item</button>
+    </div>
+
+    <script src="dist/articulate.umd.js"></script>
+    <script>
+        let elementCount = 0;
+        const elementList = document.querySelector("#elementList");
+
+        const art = new Articulate("#article", {
+            // uiElements: { SomeUiElement }
+        });
+
+        function addItem(){
+            art.pickComponent();
+        }
+    </script>
+</body>
+</html>
