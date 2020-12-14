@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tailwind Playground</title>
+    <title>Articulate Demos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="dist/articulate.umd.css" type="text/css">
@@ -15,16 +15,21 @@
     </div>
 
     <script src="dist/articulate.umd.js"></script>
-    <script>
-        let elementCount = 0;
-        const elementList = document.querySelector("#elementList");
+    <!-- <script type="module" src="custom-ui-items/BcCtaBanner.js"></script> -->
+    <script type="module">
+        import BcCtaBanner from "./custom-ui-items/BcCtaBanner.js";
+        window.BcCtaBanner = BcCtaBanner;
 
-        const art = new Articulate("#article", {
-            // uiElements: { SomeUiElement }
+        window.articulate1 = new Articulate("#article", {
+            extend: {
+                uiElements: { BcCtaBanner }
+            }
         });
+    </script>
 
-        function addItem(){
-            art.pickComponent();
+    <script>
+        window.addItem = function(){
+            articulate1.pickComponent();
         }
     </script>
 </body>
