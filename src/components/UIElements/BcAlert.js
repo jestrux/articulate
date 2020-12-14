@@ -1,5 +1,5 @@
 function BcAlert(values){
-    this.values = Object.assign({}, values);
+    this.values = values;
     this.render = () => BcAlert.doRender(this.values);
 }
 
@@ -14,10 +14,11 @@ BcAlert.props = {
     },
     title: {
         defaultValue: null,
+        optional: true,
         type: 'text'
     },
     text: {
-        defaultValue: 'Alert text goes here',
+        defaultValue: 'Due to many requests from loyalties, we\'re moving our services out of town.',
         type: 'text'
     }
 }
@@ -37,7 +38,7 @@ BcAlert.doRender = function(options) {
         title = `<strong>${options.title}</strong>`;
 
     return `
-        <div class="flex items-start border-l-4 py-2 px-4 bg-blue-100 border-blue-500 ${options.type}">
+        <div class="inline-flex max-w-lg items-start border-l-4 py-2 px-4 bg-blue-100 border-blue-500 ${options.type}">
             ${icon}
             <div class="flex-1">
                 ${title}

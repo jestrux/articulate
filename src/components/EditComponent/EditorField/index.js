@@ -1,7 +1,8 @@
 import { h } from 'preact';
 
 export default function EditorField({field, nolabel, onChange}){
-    const showLabel = !nolabel && !['image', 'youtube'].includes(field.type);
+    // const showLabel = !nolabel && !['image', 'youtube'].includes(field.type);
+    const showLabel = !nolabel;
 
     function handleChange(e){
         onChange(e.target.value);
@@ -25,10 +26,17 @@ export default function EditorField({field, nolabel, onChange}){
                 return(
                     <textarea required={!field.optional} class="border-2 w-full px-2 py-1 rounded" placeholder={field.defaultValue} rows="5" value={field.value} onInput={handleChange}></textarea>
                 );
-            default:
+            default: {
+                const supportedInputTypes = [
+                    'text', 'number', 'color', 'range'
+                ];
+
+                const fieldType = supportedInputTypes.includes(field.type) ? field.type : 'text';
+
                 return (
-                    <input required={!field.optional} class="border-2 w-full px-2 py-1 rounded" type="text" value={field.value} onInput={handleChange} />
+                    <input required={!field.optional} class="border-2 w-full px-2 py-1 rounded" type={fieldType} value={field.value} onInput={handleChange} />
                 );
+            }
         }
     }
 

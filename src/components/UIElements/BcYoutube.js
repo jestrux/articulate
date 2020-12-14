@@ -26,7 +26,7 @@ BcYoutube.icon = '<svg viewBox="0 0 334.623 334.623" xml:space="preserve" xmlns=
 
 BcYoutube.props = {
     source: {
-        defaultValue: null,
+        defaultValue: "https://www.youtube.com/watch?v=AkSCGSxOUIk",
         type: 'youtube'
       },
       // caption: {
@@ -85,7 +85,7 @@ BcYoutube.doRender = function(options, showPreview) {
     // {'playing': !options.type || options.type === 'simple' || playing}
 
     return `
-        <div class="relative " style="${style}">
+        <div class="relative bg-black" style="${style}">
             ${iframe}
             ${preview}
         </div>

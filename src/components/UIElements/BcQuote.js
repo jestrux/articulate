@@ -9,16 +9,18 @@ BcQuote.icon = '<svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4
 
 BcQuote.props = {
     text: {
-        defaultValue: 'Quote content goes here',
+        defaultValue: "It takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends when they bout to get into some mischief. And so I ward ten points to Neville and gryfindor🪄",
         type: 'long-text'
     },
     author: {
-        defaultValue: 'E.g. J. K. Rowling',
+        defaultValue: 'A. P. W. B. Dumbledore',
+        optional: true,
         type: 'text'
     },
     year: {
-        defaultValue: 'E.g. 500 AD',
-        type: 'text'
+        defaultValue: null,
+        optional: true,
+        type: 'number'
     }
 }
 
@@ -30,7 +32,7 @@ BcQuote.doRender = function(options) {
 
     return `
         <blockquote class="border-l-4 px-4 border-blue-500">
-            <span class="block text-xl">${options.text}</span>
+            <span class="block text-3xl font-light">${options.text}</span>
             <span class="mt-1 block">${owner}</span>
         </blockquote>
     `;
@@ -38,9 +40,9 @@ BcQuote.doRender = function(options) {
 
 BcQuote.preview = function () {
     return BcQuote.doRender({
-        text: 'You know how the saying goes, a lucky soldier is a good soldier. But then again fate can be tricky🤷🏽‍♂️',
-        author: "Napoleon",
-        year: "300 B.C."
+        text: "It takes a great deal of bravery to stand up to our enemies, but...",
+        author: "A. P. W. B. Dumbledore",
+        year: 1996
     });
 }
 

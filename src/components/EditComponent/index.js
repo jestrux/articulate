@@ -20,8 +20,8 @@ export default function EditComponent({opened = false, close, selectedElement, o
         const fields = [];
 
         for (const key in component.props) {
-            const {type, defaultValue, choices} = component.props[key];
-            const field = {type, defaultValue, choices};
+            const {type, defaultValue, ...otherFields} = component.props[key];
+            const field = {type, defaultValue, ...otherFields};
 
             if(type.indexOf('text') == -1 && !el.options[key] && defaultValue !== null)
                 field.value = defaultValue;

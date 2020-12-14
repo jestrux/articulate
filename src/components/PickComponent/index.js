@@ -35,7 +35,7 @@ export default function PickComponent({opened = false, close, onComponentPicked}
                                     <div dangerouslySetInnerHTML={{__html: el.preview() }}></div>
                                 </div>
 
-                                <span class="mt-2 block text-center font-semibold">{ el.label }</span>
+                                <span class="mt-2 block text-center text-xl font-semibold">{ el.label }</span>
                             </button>
                         ))
                     }
