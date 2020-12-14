@@ -7,7 +7,6 @@ import EditComponent from "./components/EditComponent";
 import Preview from "./components/Preview";
 
 export default function App({articulateRef}){
-    const [elements, setElements] = useState([]);
     const [showEditor, setShowEditor] = useState(false);
     const [selectedElement, setSelectedElement] = useState(null);
 
@@ -35,7 +34,6 @@ export default function App({articulateRef}){
     }
 
     function handleElementsChanged(){
-        setElements(articulateRef.elements);
         articulateRef.onElementsChanged(articulateRef.elements);
     }
 
@@ -45,11 +43,17 @@ export default function App({articulateRef}){
         const { label, name, props } = component;
         const element = { label, component: name, options: {} };
 
-        for (const [key, {defaultValue}] of Object.entries(props)) {
+        let editBeforeAdding = false;
+        for (const [key, {defaultValue, optional}] of Object.entries(props)) {
             element.options[key] = defaultValue;
+            if(!optional && !defaultValue)
+                editBeforeAdding = true;
         }
 
-        articulateRef.onComponentPicked(element);
+        if(editBeforeAdding)
+            articulateRef.onComponentPicked(element);
+        else
+            handleSaveElement(element);
     }
 
     function handleSaveElement(element){

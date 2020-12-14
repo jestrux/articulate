@@ -4,17 +4,19 @@ import { h, render } from 'preact';
 import * as UIElements from './components/UIElements';
 import App from "./App";
 
-function Articulate(containerId, options = {}){
+function Articulate(containerId, userOptions = {}){
 	const defaultOptions = {
 		uiElements: UIElements,
 		elements: [],
 		onComponentPicked: component => {
-			art.editElement(component);
+			this.editElement(component);
 		},
-		onElementAdded:  el => console.log("Element added: ", el),
-		onElementUpdated:  el => console.log("Element updated: ", el),
-		onElementsChanged:  elements => console.log("Elements changed: ", elements),
+		onElementAdded:  el => {},
+		onElementUpdated:  el => {},
+		onElementsChanged:  elements => {},
 	};
+
+	const { extend, ...options } = userOptions;
 
 	const fullOptions = {
 		...defaultOptions,
@@ -22,7 +24,16 @@ function Articulate(containerId, options = {}){
 	};
 
 	for (const [key, value] of Object.entries(fullOptions)) {
-		this[key] = value;
+		if(!extend || !extend[key])
+			this[key] = value;
+		else{
+			if(Array.isArray(value))
+				this[key] = [...value, ...extend[key]];
+			else if(typeof value === "object")
+				this[key] = {...value, ...extend[key]};
+			else
+				this[key] = value;
+		}
 	}
 
     render(<App articulateRef={this} />, document.querySelector(containerId));
