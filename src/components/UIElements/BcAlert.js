@@ -19,7 +19,7 @@ BcAlert.props = {
     },
     text: {
         defaultValue: 'Due to many requests from loyalties, we\'re moving our services out of town.',
-        type: 'text'
+        type: 'long-text'
     }
 }
 
@@ -37,8 +37,14 @@ BcAlert.doRender = function(options) {
     if (options.title)
         title = `<strong>${options.title}</strong>`;
 
+    const theme = {
+        'info': 'blue',
+        'error': 'red',
+        'warning': 'yellow'
+    }[options.type]
+
     return `
-        <div class="inline-flex max-w-lg items-start border-l-4 py-2 px-4 bg-blue-100 border-blue-500 ${options.type}">
+        <div class="inline-flex max-w-lg items-start border-l-4 py-2 px-4 bg-${theme}-100 border-${theme}-500 ${options.type}">
             ${icon}
             <div class="flex-1">
                 ${title}
