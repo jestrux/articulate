@@ -11,6 +11,9 @@
     "test": "node test/test.js",
     "pretest": "npm run build"
   },
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
   "dependencies": {
     "EventEmitter": "^1.0.0",
     "autosize": "^4.0.2",

@@ -11,7 +11,6 @@ export default function EditField({opened = false, selectedField, onSave}){
     }, [selectedField])
 
     function handleOnChange(value){
-        console.log("Onchange: ", value);
         setField({...field, value});
     }
 
@@ -40,7 +39,7 @@ export default function EditField({opened = false, selectedField, onSave}){
                     </button>
                 </div>
 
-                <div class="p-4 flex-1 overflow-y-auto max-h-96">
+                <div class="p-4 flex-1 overflow-y-auto" style="max-height: 100vh">
                     <form action="#" onSubmit={handleSaveElement}>
                         { field && <EditorField field={field} onChange={handleOnChange} /> }
 
