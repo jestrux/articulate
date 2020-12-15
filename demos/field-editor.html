@@ -5,24 +5,30 @@
     <title>Articulate Demos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="dist/articulate.umd.css" type="text/css">
+    <link rel="stylesheet" href="../dist/umd/edit-field.css" type="text/css">
 </head>
 <body>
-    <div>
-        <div id="article"></div>
-
-        <button class="border bg-blue-500 text-white py-1 px-6 rounded-full" onclick="addItem()">Add Item</button>
-
-        <div class="max-w-5xl mx-auto rounded-xl px-8"
-            style="color: whit; background-color: antiquewhite; sbackground: linear-gradient(90deg, #034959 19%, #1aa1be 91%);"
-        >
+    <div class="py-8 max-w-5xl mx-auto">
+        <div class="mb-6 ">
+            <h3 class="text-2xl font-semibold mb-1">
+                Field Editor
+            </h3>
+            <p class="opacity-75">
+                Click on any of the images or text nodes in the below call to action banner to edit them.
+            </p>
+        </div>
+        <div class="rounded-xl px-8" style="color: whit; background-color: antiquewhite;">
             <div class="flex">
                 <div class="max-w-xs -mr-8 py-10 flex flex-col items-start justify-between">
                     <div>
-                        <span class="text-sm font-light tracking-wider block mb-1">
-                            STAYCATIONS
+                        <span class="text-sm opacity-70 uppercase tracking-wider inline-block mb-1"
+                            editable="{label: 'Topic'}"
+                        >
+                            Staycations
                         </span>
-                        <h1 class="text-4xl leading- font-">
+                        <h1 class="font-serif text-4xl leading- font-" 
+                            editable="{label: 'Title'}"
+                        >
                             Fun  
                             experiences
                             designed to go 
@@ -30,7 +36,9 @@
                         </h1>
                     </div>
 
-                    <button class="mb-4 border-none shadow-sm bg-white text-black text-sm font-medium py-2 px-6 rounded">
+                    <button class="mb-4 border-none shadow-sm bg-white text-black text-sm font-medium py-2 px-6 rounded"
+                        editable="{label: 'CTA Text'}"
+                    >
                         View All
                     </button>
                 </div>
@@ -38,59 +46,67 @@
                     <div class="absolute inset-x-0 -inset-y-24 grid grid-cols-4 gap-x-4">
                         <div class="pt-64 h-full flex flex-col space-y-4">
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDh8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDZ8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                         </div>
                         <div class="py-32 mt-20 h-full flex flex-col space-y-4">
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1496345962527-29757c3a3d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDE0fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1488751045188-3c55bbf9a3fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDEzfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                         </div>
                         <div class="relative py-32 h-full flex flex-col space-y-4">
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1591292082066-0e20e80284a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDg2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1588702548001-34f488aa6a75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDY4fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
 
-                            <div class="absolute bottom-12 w-full bg-white h-16 rounded-lg"></div>
+                            <div class="absolute bottom-12 w-full bg-gray-300 h-16 rounded-lg"></div>
                         </div>
                         <div class="py-32 mt-12 h-full flex flex-col space-y-4">
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1591348445405-d960e9d7ef45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDM2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                             <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="absolute object-cover w-full h-full" 
+                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
                                     src="https://images.unsplash.com/photo-1593075979461-e0116242e814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDYxfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
                                     alt="" 
+                                    editable
                                 />
                             </div>
                         </div>
@@ -100,15 +116,52 @@
         </div>
     </div>
 
-    <script src="dist/articulate.umd.js"></script>
+    <script src="../dist/umd/field-editor.js"></script>
     <script>
-        const art = new Articulate("#article", {
-            // uiElements: { SomeUiElement }
-        });
+        const { editField } = new ArticulateFieldEditor();
 
-        function addItem(){
-            art.pickComponent();
-        }
+        document.querySelectorAll("[editable]").forEach(el => {
+            const derivedValues = {
+                editableField: "innerText"
+            };
+            
+            el.onclick = e => {
+                let focusableEl = el;
+
+                if(el.nodeName == "IMG"){
+                    derivedValues.type = "image";
+                    derivedValues.value = el.src;
+                    derivedValues.editableField = "src";
+                    focusableEl = el.parentNode;
+                }
+                else{
+                    derivedValues.type = "text";
+                    derivedValues.value = el.innerText;
+                }
+                    
+                let values = el.getAttribute("editable") || "{}";
+                const field = {...derivedValues, ...eval(`(${values})`)};
+
+                focusableEl.classList.add("ring-4");
+
+                e.preventDefault();
+                editField(
+                    field,
+                    (value) => {
+                        focusableEl.classList.remove("ring-4");
+
+                        if(!value) return;
+                        
+                        if(field.editableField == "src")
+                            el.src = "";
+
+                        setTimeout(() => {
+                            el[field.editableField] = value;
+                        }, 20);
+                    }
+                );
+            }
+        });
     </script>
 </body>
 </html>
