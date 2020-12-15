@@ -1,9 +1,9 @@
 {
   "name": "articulate",
   "version": "0.1.0",
-  "main": "dist/articulate.cjs.js",
-  "module": "dist/articulate.esm.js",
-  "browser": "dist/articulate.umd.js",
+  "main": "dist/cjs/articulate.js",
+  "module": "dist/es/articulate.js",
+  "browser": "dist/umd/articulate.js",
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
     "dev": "rollup -c -w",

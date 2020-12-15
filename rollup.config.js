@@ -12,8 +12,39 @@ import pkg from './package.json';
 
 const isProduction = process.env.NODE_ENV === "production";
 
+const plugins = [
+	babel({
+		exclude: 'node_modules/**'
+	}),
+	resolve(), // so Rollup can find `ms`
+	commonjs(), // so Rollup can convert `ms` to an ES module
+	postcss({
+		config: {
+			path: "./postcss.config.js",
+		},
+		extensions: [".css"],
+		extract: true,
+		minimize: isProduction,
+		// modules: true,
+	}),
+	isProduction && terser(),
+	!isProduction && serve(),
+	!isProduction && livereload({
+		watch: [
+			path.resolve(__dirname, 'dist'),
+			path.resolve(__dirname, 'src'),
+			path.resolve(__dirname, 'index.html')
+		],
+		exts: ['html', 'js', 'scss', 'sass', 'css']
+	}),
+];
+
+const output = [
+	{ file: pkg.main, format: 'cjs' },
+	{ file: pkg.module, format: 'es' }
+];
+
 export default [
-	// browser-friendly UMD build
 	{
 		input: 'src/main.js',
 		output: {
@@ -21,46 +52,25 @@ export default [
 			file: pkg.browser,
 			format: 'umd'
 		},
-		plugins: [
-			babel({
-				exclude: 'node_modules/**'
-			}),
-			resolve(), // so Rollup can find `ms`
-			commonjs(), // so Rollup can convert `ms` to an ES module
-			postcss({
-				config: {
-					path: "./postcss.config.js",
-				},
-				extensions: [".css"],
-				extract: true,
-				minimize: isProduction,
-				// modules: true,
-			}),
-			isProduction && terser(),
-			!isProduction && serve(),
-			!isProduction && livereload({
-				watch: [
-					path.resolve(__dirname, 'dist'),
-					path.resolve(__dirname, 'src'),
-					path.resolve(__dirname, 'index.html')
-				],
-				exts: ['html', 'js', 'scss', 'sass', 'css']
-			}),
-		]
+		plugins
 	},
-
-	// CommonJS (for Node) and ES module (for bundlers) build.
-	// (We could have three entries in the configuration array
-	// instead of two, but it's quicker to generate multiple
-	// builds from a single configuration where possible, using
-	// an array for the `output` option, where we can specify
-	// `file` and `format` for each target)
-	
+	{
+		input: 'src/field-editor.js',
+		output: {
+			name: 'ArticulateFieldEditor',
+			file: "dist/umd/field-editor.js",
+			format: 'umd'
+		},
+		plugins
+	},
 	// {
 	// 	input: 'src/main.js',
-	// 	output: [
-	// 		{ file: pkg.main, format: 'cjs' },
-	// 		{ file: pkg.module, format: 'es' }
-	// 	]
+	// 	output,
+	// 	plugins
+	// },
+	// {
+	// 	input: 'src/edit-field.js',
+	// 	output,
+	// 	plugins
 	// },
 ];

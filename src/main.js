@@ -2,7 +2,7 @@ import "./main.css";
 import { h, render } from 'preact';
 
 import * as UIElements from './components/UIElements';
-import App from "./App";
+import App from "./components/App";
 
 function Articulate(containerId, userOptions = {}){
 	const defaultOptions = {

@@ -1,10 +1,10 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 
-import ArticulateConfig from "./ArticulateConfig";
-import PickComponent from "./components/PickComponent";
-import EditComponent from "./components/EditComponent";
-import Preview from "./components/Preview";
+import ArticulateConfig from "../ArticulateConfig";
+import PickComponent from "./PickComponent";
+import EditComponent from "./EditComponent";
+import Preview from "./Preview";
 
 export default function App({articulateRef}){
     const [showEditor, setShowEditor] = useState(false);
