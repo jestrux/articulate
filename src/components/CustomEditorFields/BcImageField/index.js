@@ -4,6 +4,7 @@ import { useEffect, useState } from 'preact/hooks';
 import BcLinkField from "../BcLinkField";
 import BcUnsplashSearch from './BcUnsplashSearch';
 import BcGiphySearch from './BcGiphySearch';
+import BCMemeGenerator from './BCMemeGenerator';
 
 export default function BcImageField({
     field,
@@ -11,7 +12,7 @@ export default function BcImageField({
 }){
     const { label, value, optional } = field;
     const [val, setVal] = useState(null);
-    const [activeTab, setActiveTab] = useState('link');
+    const [activeTab, setActiveTab] = useState('meme');
 
     useEffect(() => {
         if(value) setVal(value)
@@ -41,6 +42,12 @@ export default function BcImageField({
                     Giphy
                 </button>
 
+                <button type="button" class={`focus:outline-none border border-transparent py-2 px-4 rounded-full bg-transparent font-medium text-xs leading-none tracking-wide uppercase text-gray-400 ${getActiveStyling('meme')}`}
+                    onClick={() => setActiveTab('meme')}
+                >
+                    Generate Meme
+                </button>
+
                 <button type="button" class={`focus:outline-none border border-transparent py-2 px-4 rounded-full bg-transparent font-medium text-xs leading-none tracking-wide uppercase text-gray-400 ${getActiveStyling('link')}`}
                     onClick={() => setActiveTab('link')}
                 >
@@ -58,9 +65,9 @@ export default function BcImageField({
                 <div>
                     <BcLinkField field={field} onChange={handleChange} />
 
-                    <div class="relative bg-gray-100 rounded mt-3 mb-1 flex justify-center" style="height: 360px">
+                    <div class="relative bg-gray-100 rounded mt-3 mb-1 flex justify-center" style="height: 348px">
                         { val && val.length && (
-                            <img class="absolute inset-0 h-full max-w-full object-contain" src={val} alt="" />
+                            <img class="absolute inset-0 m-auto h-full object-contain" src={val} alt="" />
                         )}
                     </div>
                 </div>
@@ -75,6 +82,12 @@ export default function BcImageField({
             { activeTab == 'giphy' && 
                 <div>
                     <BcGiphySearch onChange={handleChange} />
+                </div>
+            }
+
+            { activeTab == 'meme' && 
+                <div>
+                    <BCMemeGenerator onChange={handleChange} />
                 </div>
             }
         </div>
