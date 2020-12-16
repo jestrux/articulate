@@ -128,20 +128,18 @@ export default function BCMemeGenerator({onChange = _ => {}}){
                         </div>
 
                         <div className="flex-shrink-0 ml-6" style="width: 55%">
-                            <h3 class="text-xl font-semibold">Customize Meme</h3>
+                            {/* <h3 class="text-xl font-semibold">Customize Meme</h3> */}
 
                             <form action="#" onSubmit={generateMeme}>
                                 { Array(selectedMeme.box_count).fill("").map((c, index) => (
-                                    <div class="mt-4">
-                                        <div class="mb-5">
-                                            <label class="capitalize block">
-                                                Text {index + 1}
-                                            </label>
+                                    <div class="mb-5">
+                                        <label class="capitalize block">
+                                            Text {index + 1}
+                                        </label>
 
-                                            <input class="border-2 rounded text-lg h-10 w-full px-3 py-2" 
-                                                onInput={(e) => handleCaptionChanged(e.target.value, index)}
-                                            />
-                                        </div>
+                                        <input class="border-2 rounded text-lg h-10 w-full px-3 py-2" 
+                                            onInput={(e) => handleCaptionChanged(e.target.value, index)}
+                                        />
                                     </div> 
                                 ))}
                                 
