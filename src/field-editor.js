@@ -11,7 +11,7 @@ function FieldEditor({articulateRef}){
 	const [selectedField, setSelectedField] = useState(null);
 
 	articulateRef.editField = (field, callback = _ => {}) => {
-		articulateRef.onSaveField = callback;
+		articulateRef.onFieldChanged = callback;
 
 		const defaultFieldValue = {
 			optional: true
@@ -26,9 +26,13 @@ function FieldEditor({articulateRef}){
 		});
 	}
 
-	function handleOnSave(value){
-		articulateRef.onSaveField(value);
+	function handleOnChange(value){
+		articulateRef.onFieldChanged(value);
+	}
+
+	function handleOnClose(){
 		setShowFieldEditor(false);
+		articulateRef.onFieldChanged(undefined);
 	}
 
 	return (
@@ -36,7 +40,8 @@ function FieldEditor({articulateRef}){
 			<EditField 
 				selectedField={selectedField} 
 				opened={showFieldEditor} 
-				onSave={handleOnSave}
+				onChange={handleOnChange}
+				onClose={handleOnClose}
 			/>
 		</ArticulateConfig.Provider>
 	);

@@ -47,11 +47,11 @@ export default function BcImageSearch({
     }
     
     return (
-        <div class="mb-4 -mt-3 relative" style="width: 650px">
-            <div className="absolute bg-gray-100 -inset-4 bottom-0">
+        <div class="relative h-full flex flex-col bg-gray-100 overflow-hidden">
+            {/* <div className="absolute bg-gray-100 -inset-4 bottom-0">
 
-            </div>
-            <form class="relative border-2 rounded overflow-hidden flex items-center"
+            </div> */}
+            <form class="relative border-2 overflow-hidden flex items-center"
                 onSubmit={handleSearchPhotos}
                 autocomplete="off"
             >
@@ -73,7 +73,7 @@ export default function BcImageSearch({
                 }
             </form>
 
-            <div className="-mx-4 px-4 my-3 grid grid-cols-3 gap-4 overflow-y-auto" style="height: 360px">
+            <div className="flex-1 pt-3 px-3 grid grid-cols-3 gap-4 overflow-y-auto">
                 { results && results.map(image => (
                     <button type="button" class="bg-gray-100 border rounded overflow-x-hidden relative"
                         style={`background: ${image.color}; height: 230px`}

@@ -28,8 +28,8 @@ export default function BcImageField({
     }
     
     return (
-        <div class="mb-4" style="width: 650px">
-            <div className="z-10 relative bg-gray-100 bg-opacity-70 -m-4 mb-3 py-2 px-4 flex items-center">
+        <div class="-mt-3 -mb-6" style="width: 650px">
+            <div className="z-10 relative bg-gray-100 bg-opacity-70 -mx-4 py-2 px-4 flex items-center">
                 <button type="button" class={`focus:outline-none border border-transparent py-2 px-4 rounded-full bg-transparent font-medium text-xs leading-none tracking-wide uppercase text-gray-400 ${getActiveStyling('unsplash')}`}
                     onClick={() => {setVal(""); setActiveTab('unsplash')}}
                 >
@@ -61,35 +61,31 @@ export default function BcImageField({
                 </button> */}
             </div>
 
-            { activeTab == 'link' && 
-                <div>
-                    <BcLinkField field={field} onChange={handleChange} />
+            <div class="bg-gray overflow-hidden -mx-4" style="height: 380px">
+                { activeTab == 'link' && 
+                    <div class="h-full flex flex-col">
+                        <BcLinkField field={field} onChange={handleChange} />
 
-                    <div class="relative bg-gray-100 rounded mt-3 mb-1 flex justify-center" style="height: 348px">
-                        { val && val.length && (
-                            <img class="absolute inset-0 m-auto h-full object-contain" src={val} alt="" />
-                        )}
+                        <div class="flex-1 overflow-y-auto relative bg-gray-100 rounded mt-3 mb-1 flex justify-center">
+                            { val && val.length && (
+                                <img class="absolute inset-0 m-auto h-full object-contain" src={val} alt="" />
+                            )}
+                        </div>
                     </div>
-                </div>
-            }
+                }
 
-            { activeTab == 'unsplash' && 
-                <div>
+                { activeTab == 'unsplash' && 
                     <BcUnsplashSearch onChange={handleChange} />
-                </div>
-            }
+                }
 
-            { activeTab == 'giphy' && 
-                <div>
+                { activeTab == 'giphy' && 
                     <BcGiphySearch onChange={handleChange} />
-                </div>
-            }
+                }
 
-            { activeTab == 'meme' && 
-                <div>
+                { activeTab == 'meme' && 
                     <BCMemeGenerator onChange={handleChange} />
-                </div>
-            }
+                }
+            </div>
         </div>
     )
 }
