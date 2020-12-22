@@ -3,13 +3,13 @@ import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import ArticulateConfig from '../../ArticulateConfig';
 import EditorField from './EditorField';
 
-export default function EditComponent({opened = false, close, selectedElement, onSave}){
+export default function EditComponent({opened = false, selectedElement, onChange, onClose}){
     const [el, setEl] = useState(null);
     const { uiElements } = useContext(ArticulateConfig);
 
     if(!uiElements) return null;
 
-    const fields = useCallback(() => {
+    function fields(){
         if(!el || !el.component)
             return [];
         
@@ -23,31 +23,44 @@ export default function EditComponent({opened = false, close, selectedElement, o
             const {type, defaultValue, ...otherFields} = component.props[key];
             const field = {type, defaultValue, ...otherFields};
 
-            if(type.indexOf('text') == -1 && !el.options[key] && defaultValue !== null)
-                field.value = defaultValue;
-            else if(el.options[key])
+            if (el.options[key] !== undefined) 
                 field.value = el.options[key];
+            else if (defaultValue !== undefined){
+                el.options[key] = defaultValue;
+                field.value = defaultValue;
+            }
 
             field.name = key;
             fields.push(field);
         }
 
         return fields;
-    }, [el]);
+    }
 
     useEffect(() => {
         setEl(JSON.parse(JSON.stringify({...selectedElement})));
-    }, [selectedElement])
+    }, [selectedElement]);
+
+    function handleChange(value, field){
+        const options = {
+            ...el.options, [field]: value
+        };
+
+        setEl({...el, options});
+        
+        onChange(options);
+    }
 
     function handleSaveElement(e){
         e.preventDefault();
-        onSave(el);
+        onChange(el.options);
+        onClose();
     }
 
     return (
         <div class={`flex fixed inset-0 z-50 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
-                onClick={close}></div>
+                onClick={onClose}></div>
                 
             <div class={`ml-auto flex flex-col h-full relative z-10 w-1/3 max-w-sm bg-white shadow overflow-hidden transition ${!opened && 'transform translate-x-full'}`}>
                 <div class="p-4 border-b flex items-center justify-between">
@@ -56,7 +69,7 @@ export default function EditComponent({opened = false, close, selectedElement, o
                     </h3>
 
                     <button class="focus:outline-none w-6 h-6 rounded-full p-0 flex items-center justify-center bg-gray-300"
-                        onClick={close}
+                        onClick={onClose}
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                     </button>
@@ -66,13 +79,13 @@ export default function EditComponent({opened = false, close, selectedElement, o
                     <form action="#" onSubmit={handleSaveElement}>
                         { fields().map(field => (
                             <div class="mb-4">
-                                <EditorField field={field} onChange={value => el.options[field.name] = value } />
+                                <EditorField field={field} onChange={(value) => handleChange(value, field.name)} />
                             </div>
                         )) }
 
-                        <button type="submit" class="px-5 py-2 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full w-full">
+                        {/* <button type="submit" class="px-5 py-2 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full w-full">
                             Save Changes
-                        </button>
+                        </button> */}
                     </form>
                 </div>
 

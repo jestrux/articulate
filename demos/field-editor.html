@@ -6,119 +6,215 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../dist/umd/field-editor.css" type="text/css">
+    <link rel="stylesheet" href="../dist/umd/component-editor.css" type="text/css">
 </head>
 <body>
-    <div class="py-8 max-w-5xl mx-auto">
-        <div class="mb-6 ">
-            <h3 class="text-2xl font-semibold mb-1">
-                Field Editor
-            </h3>
-            <p class="opacity-75">
-                Click on any of the images or text nodes in the below call to action banner to edit them.
-            </p>
+    <header class="absolute top-0 inset-x-0 flex items-center justify-center z-50">
+        <ul id="mainNavigation" class="flex items-center space-x-8 text-sm font-semibold uppercase" onclick="hideMobileNav()">
+            <li>
+                <a href="#" class="block px-3 py-4 hover:text-black text-red-500 pointer-events-none">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                    Getting Started
+                </a>
+            </li>
+        
+            <li>
+                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                    Developers
+                </a>
+            </li>
+        
+            <li>
+                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                    Contact Us
+                </a>
+            </li>
+            <li>
+                <a href="#" class="block px-3 py-4 text-dark text-gray-700 text-opacity-75 hover:text-black">
+                    Help
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <section class="relative pt-24">
+        <div id="sineCanvas" class="overflow-hidde absolute top-0 -bottom-16 inset-x-0 bg-white z-0">
         </div>
-        <div class="rounded-xl px-8" style="color: whit; background-color: antiquewhite;">
-            <div class="flex">
-                <div class="max-w-xs -mr-8 py-10 flex flex-col items-start justify-between">
-                    <div>
-                        <span class="text-sm opacity-70 uppercase tracking-wider inline-block mb-1"
-                            editable="{label: 'Topic'}"
+
+        <div class="mt-6 max-w-5xl mx-auto">
+            <div class="relative z-10 mb-16 text-center">
+                <h3 class="text-fanc opacity-90 text-4xl font-extrabold mb-4">
+                    Single Field Editors
+                </h3>
+                <p class="text-xl text-fanc leading-relaxed max-w-xl mx-auto">
+                    Click any of the images or text items in the banner below to see Articulate's single field editor in action.
+                </p>
+    
+                <!-- <button class="mt-6 border-2 uppercase border-black border-opacity-30 text-fancy font-semibold shadow-sm bg-transparent text-white text-sm py-2 px-6 rounded">
+                    Turn On Edit Mode
+                </button> -->
+            </div>
+            <div class="relative z-10 rounded-xl px-8 shadow-lg" style="color: white; background-color: #252525;">
+                <div class="flex">
+                    <div class="max-w-xs -mr-8 py-10 flex flex-col items-start justify-between">
+                        <div>
+                            <span class="text-sm opacity-70 uppercase tracking-wider inline-block mb-1"
+                                editable="{label: 'Topic'}"
+                            >
+                                Staycations
+                            </span>
+                            <h1 class="font-serif text-4xl leading- font-" 
+                                editable="{label: 'Title'}"
+                            >
+                                Fun  
+                                experiences
+                                designed to go 
+                                deeper.
+                            </h1>
+                        </div>
+    
+                        <button class="mb-4 border-none shadow-sm bg-white text-black text-sm font-medium py-2 px-6 rounded"
+                            editable="{label: 'CTA Text'}"
                         >
-                            Staycations
-                        </span>
-                        <h1 class="font-serif text-4xl leading- font-" 
-                            editable="{label: 'Title'}"
-                        >
-                            Fun  
-                            experiences
-                            designed to go 
-                            deeper.
-                        </h1>
+                            View All
+                        </button>
                     </div>
-
-                    <button class="mb-4 border-none shadow-sm bg-white text-black text-sm font-medium py-2 px-6 rounded"
-                        editable="{label: 'CTA Text'}"
-                    >
-                        View All
-                    </button>
-                </div>
-                <div class="flex-1 flex relative overflow-hidden -mr-2" style="height: 480px;">
-                    <div class="absolute inset-x-0 -inset-y-24 grid grid-cols-4 gap-x-4">
-                        <div class="pt-64 h-full flex flex-col space-y-4">
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDh8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
+                    <div class="flex-1 flex relative overflow-hidden -mr-2" style="height: 480px;">
+                        <div class="absolute inset-x-0 -inset-y-24 grid grid-cols-4 gap-x-4">
+                            <div class="pt-64 h-full flex flex-col space-y-4">
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDh8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDZ8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
                             </div>
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDZ8fG9ubGluZXxlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
+                            <div class="py-32 mt-20 h-full flex flex-col space-y-4">
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1496345962527-29757c3a3d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDE0fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1488751045188-3c55bbf9a3fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDEzfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div class="py-32 mt-20 h-full flex flex-col space-y-4">
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1496345962527-29757c3a3d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDE0fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
+                            <div class="relative py-32 h-full flex flex-col space-y-4">
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1591292082066-0e20e80284a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDg2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1588702548001-34f488aa6a75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDY4fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
+    
+                                <div class="absolute bottom-12 w-full bg-gray-300 h-16 rounded-lg"></div>
                             </div>
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1488751045188-3c55bbf9a3fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDEzfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
-                            </div>
-                        </div>
-                        <div class="relative py-32 h-full flex flex-col space-y-4">
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1591292082066-0e20e80284a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDg2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
-                            </div>
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1588702548001-34f488aa6a75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDY4fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
-                            </div>
-
-                            <div class="absolute bottom-12 w-full bg-gray-300 h-16 rounded-lg"></div>
-                        </div>
-                        <div class="py-32 mt-12 h-full flex flex-col space-y-4">
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1591348445405-d960e9d7ef45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDM2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
-                            </div>
-                            <div class="flex-1 relative rounded-lg overflow-hidden">
-                                <img class="bg-gray-300 absolute object-cover w-full h-full" 
-                                    src="https://images.unsplash.com/photo-1593075979461-e0116242e814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDYxfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
-                                    alt="" 
-                                    editable
-                                />
+                            <div class="py-32 mt-12 h-full flex flex-col space-y-4">
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1591348445405-d960e9d7ef45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDM2fHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
+                                <div class="flex-1 relative rounded-lg overflow-hidden">
+                                    <img class="bg-gray-300 absolute object-cover w-full h-full" 
+                                        src="https://images.unsplash.com/photo-1593075979461-e0116242e814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDYxfHxvbmxpbmV8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" 
+                                        alt="" 
+                                        editable
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="bg-white mt-20 mb-12 py-12">
+        <div class="max-w-6xl mx-auto flex items-center">
+            <div class="relative w-2/5 mr-12 mb-20">
+                <h3 class="text-4xl font-bold mb-3">
+                    Use single and multi field editors
+                    for better UX
+                </h3>
+                <p class="text-xl opacity-75 leading-loose max-w-2xl mx-auto">
+                    In this section we use the multi field editor to edit all properties dealing with the look and feel of the grid together, but the images are edited by clicking and changing using the field editor.
+                </p>
+
+                <button class="inline-flex items-center mt-6 border-2 border-black border-opacity-30 bg-transparent font-semibold shadow-sm text-black text-opacity-75 text-sm uppercase py-2 px-3 rounded"
+                    onclick="editUsersImageGrid()"
+                >
+                    <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+
+                    Edit Grid
+                </button>
+            </div>
+
+            <div class="flex-1" id="usersImageGridWrapper">
+                <div class="grid grid-cols-3 gap-3" style="height: 500px;">
+                    <div class="opacity-100 rounded overflow-hidden col-span-1 bg-gray-500 relative">
+                        <img class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.pexels.com/photos/5152960/pexels-photo-5152960.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" />
+                    </div>
+                    <div class="opacity-100 rounded overflow-hidden col-span-2 bg-gray-500 relative">
+                        <img class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1608600927239-e968bee5e0f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8YWxsfDIyfHx8fHx8Mnw&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
+                    </div>
+                    <div class="opacity-100 rounded overflow-hidden col-span-2 bg-gray-500 relative">
+                        <img class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1508395141412-e3e7f4851217?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDYyOHx8bGl0JTIwdXB8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
+                    </div>
+                    <div class="opacity-100 rounded overflow-hidden col-span-1 bg-gray-500 relative">
+                        <img class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1524742567765-32ad015be9fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDQxNXx8bGl0JTIwdXB8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="../dist/umd/field-editor.js"></script>
+    <script src="../dist/umd/component-editor.js"></script>
+    <script src="assets/p5.min.js"></script>
+    <script src="assets/sketch.js"></script>
+
     <script>
         const { editField } = new ArticulateFieldEditor();
+        window.addEventListener("load", () => {
+            const sineCanvas = document.querySelector("#defaultCanvas0");
+            document.querySelector("#sineCanvas").appendChild(sineCanvas);
+        });
 
         document.querySelectorAll("[editable]").forEach(el => {
             const derivedValues = {
@@ -163,9 +259,72 @@
             }
         });
 
-        // editField({
-        //     type: 'image'
-        // });
+        // editField(
+        //     {type: 'color', value: "rgba(255, 255, 0, 0.4)"},
+        //     (value) => {
+        //         if(value == undefined) return;
+
+        //         window.sineColor = value;
+        //     }
+        // );
+    </script>
+
+
+    <script type="module">
+        import ImageGrid from "./image-grid-component.js";
+        window.ImageGrid = ImageGrid;
+
+        const { editComponent, uiElements } = new ArticulateComponentEditor({
+            uiElements: { ImageGrid }
+        });
+
+        const grid = new ImageGrid({});
+
+        const usersGrid = {
+            label: "Image Grid",
+            component: "ImageGrid"
+        };
+
+        const usersImageGridWrapper = document.querySelector("#usersImageGridWrapper");
+
+        function setupGridInlineEditor(){
+            usersImageGridWrapper.querySelectorAll("img").forEach((el, index) => {
+                el.onclick = e => {
+                    const focusableEl = el.parentNode;
+                    const field = {type: "image", value: el.src};
+
+                    focusableEl.classList.add("ring-4");
+
+                    e.preventDefault();
+                    editField(
+                        field,
+                        (value) => {
+                            focusableEl.classList.remove("ring-4");
+
+                            if(value == undefined) return;
+                            
+                            el.src = "";
+
+                            setTimeout(() => el.src = value, 20);
+                            grid.images[index] = value;
+                        }
+                    );
+                }
+            })
+        }
+
+        setupGridInlineEditor();
+
+        window.editUsersImageGrid = function(){
+            editComponent(usersGrid, (newValues) => {
+                grid.values = {
+                    ...grid.values, ...newValues
+                };
+
+                usersImageGridWrapper.innerHTML = grid.render();
+                setupGridInlineEditor();
+            });
+        }
     </script>
 </body>
 </html>

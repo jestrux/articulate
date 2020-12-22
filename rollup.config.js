@@ -63,6 +63,15 @@ export default [
 		},
 		plugins
 	},
+	{
+		input: 'src/component-editor.js',
+		output: {
+			name: 'ArticulateComponentEditor',
+			file: "dist/umd/component-editor.js",
+			format: 'umd'
+		},
+		plugins
+	},
 	// {
 	// 	input: 'src/main.js',
 	// 	output,
