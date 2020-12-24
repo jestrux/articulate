@@ -165,23 +165,23 @@
         </div>
     </section>
 
-    <section class="bg-white mt-20 mb-12 py-12">
+    <section class="bg-white my-32">
         <div class="max-w-6xl mx-auto flex items-center">
             <div class="relative w-2/5 mr-12 mb-20">
-                <h3 class="text-4xl font-bold mb-3">
-                    Use single and multi field editors
-                    for better UX
+                <h3 class="text-3xl font-bold mb-3">
+                    Use the single field editor with
+                    component editor for better UX
                 </h3>
                 <p class="text-xl opacity-75 leading-loose max-w-2xl mx-auto">
-                    In this section we use the multi field editor to edit all properties dealing with the look and feel of the grid together, but the images are edited by clicking and changing using the field editor.
+                    In this section we use the component editor to change the look and feel of the grid together, but again like the section above, the images are edited by clicking and changing using the field editor.
                 </p>
 
-                <button class="inline-flex items-center mt-6 border-2 border-black border-opacity-30 bg-transparent font-semibold shadow-sm text-black text-opacity-75 text-sm uppercase py-2 px-3 rounded"
+                <button class="inline-flex items-center mt-6 border-2 border-black border-opacity-20 bg-black bg-opacity-80 shadow-sm text-yellow-300 text-opacity-95 text-sm uppercase tracking-wide py-2 px-5 rounded"
                     onclick="editUsersImageGrid()"
                 >
-                    <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                    <svg class="w-4 h-4 mr-3 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
 
-                    Edit Grid
+                    Change Grid
                 </button>
             </div>
 
@@ -200,6 +200,264 @@
                         <img class="absolute inset-0 w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1524742567765-32ad015be9fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNjE2NXwwfDF8c2VhcmNofDQxNXx8bGl0JTIwdXB8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-16 pb-32 relative bg-gray-100">
+        <div class="absolute top-0 inset-x-0 h-3/5 bg-gradient-to-br from-blue-900 to-green-600">
+
+        </div>
+        <div class="h-full mt-6 max-w-5xl mx-auto relative z-10">
+            <div class="relative z-10 mb-16 text-center text-white">
+                <h3 class="text-fanc opacity-90 text-3xl font-bold mb-4">
+                    Custom Single Field Editors
+                </h3>
+                <p class="text-lg opacity-75 leading-relaxed max-w-xl mx-auto">
+                    Sometimes you have a field that can't be easily with Articulate's default editors, in such cases you can simply create a custom field editor.
+                </p>
+
+                <button class="mt-6 border-2 uppercase border-white border-opacity-40 font-semibold shadow-sm bg-white bg-opacity-20 text-white text-sm py-2 px-6 rounded">
+                    Edit Table Data
+                </button>
+            </div>
+
+            <div class="text-white shadow-lg rounded-lg overflow-hidden"
+                style="background-color: #181818;"
+            >
+                <table class="min-w-full leading-normal">
+                    <thead style="background-color: #272727;" class="text-white text-opacity-50">
+                        <tr>
+                            <th
+                                class="pl-5 pr-8 py-4 text-center text-xs font-semibold uppercase tracking-wider">
+                                Rank
+                            </th>
+                            <th
+                                class="w-1/4 px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider">
+                                Artist
+                            </th>
+                            <th
+                                class="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider">
+                                Popular Song
+                            </th>
+                            <th
+                                class="px-5 py-4 text-xs font-semibold uppercase tracking-wider text-center">
+                                Discovered On
+                            </th>
+                            <th
+                                class="px-5 py-4 text-xs font-semibold uppercase tracking-wider text-center">
+                                # of Streams
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pl-3 pr-6 py-5 text-center font-bold border-b border-white border-opacity-10 text-2xl">
+                            <span class="opacity-50">
+                                01.
+                            </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-14 h-14 border-double border-4 border-white border-opacity-30 rounded-full">
+                                        <img class="w-full h-full rounded-full object-cover"
+                                            src="https://images.squarespace-cdn.com/content/v1/5bdb9c2e2487fdd560b4a9fc/1574786647550-NV2LDEGPXVPGDY9H56IC/ke17ZwdGBToddI8pDm48kKInUKqRwCShGOW65AhMrgF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmzRdow2MKoDNGJuOcT_AGWd2McBVGpGdiYChmGYNFV38TGvg1MyZ_ymkzEYVzBARQ/NorahJones_01_111_ClayPatrickMcBride.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-semibold opacity-95 whitespace-no-wrap">
+                                            Norah Jones
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <p class="opacity-80 text-base whitespace-no-wrap">
+                                    Don't Know Why
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <p class="opacity-70 whitespace-no-wrap">
+                                    Jul 05, 2002
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-medium bg-white rounded-full text-pink-900 leading-none lowercase">
+                                    <span aria-hidden
+                                        class="absolute inset-0 bg-pink-100 rounded-full"></span>
+                                    <span class="relative">
+                                        156,970
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pl-3 pr-6 py-5 text-center font-bold border-b border-white border-opacity-10 text-2xl">
+                            <span class="opacity-50">
+                                02.
+                            </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-14 h-14 border-double border-4 border-white border-opacity-30 rounded-full">
+                                        <img class="w-full h-full rounded-full object-cover"
+                                            src="https://is4-ssl.mzstatic.com/image/thumb/Features124/v4/31/86/b9/3186b904-e94d-806f-0554-cd988d5beecb/pr_source.png/380x380cc-60.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-semibold opacity-95 whitespace-no-wrap">
+                                            Asa
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <p class="opacity-80 text-base whitespace-no-wrap">
+                                    Good Thing
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <p class="opacity-70 whitespace-no-wrap">
+                                    Aug 26, 2019
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-medium bg-white rounded-full text-yellow-900 leading-none lowercase">
+                                    <span aria-hidden
+                                        class="absolute inset-0 bg-yellow-300 bg-opacity-50 rounded-full"></span>
+                                    <span class="relative">
+                                        90,237
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pl-3 pr-6 py-5 text-center font-bold border-b border-white border-opacity-10 text-2xl">
+                            <span class="opacity-50">
+                                03.
+                            </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-14 h-14 border-double border-4 border-white border-opacity-30 rounded-full">
+                                        <img class="w-full h-full rounded-full object-cover"
+                                            src="https://www.provokr.com/wp-content/uploads/2020/01/her4-1537554947-1.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-semibold opacity-95 whitespace-no-wrap">
+                                            H.E.R.
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <p class="opacity-80 text-base whitespace-no-wrap">
+                                    Fate
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <p class="opacity-70 whitespace-no-wrap">
+                                    Nov 04, 2018
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-medium bg-white rounded-full text-yellow-900 leading-none lowercase">
+                                    <span aria-hidden
+                                        class="absolute inset-0 bg-yellow-300 bg-opacity-50 rounded-full"></span>
+                                    <span class="relative">
+                                        82,594
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pl-3 pr-6 py-5 text-center font-bold border-b border-white border-opacity-10 text-2xl">
+                            <span class="opacity-50">
+                                05.
+                            </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-14 h-14 border-double border-4 border-white border-opacity-30 rounded-full">
+                                        <img class="w-full h-full rounded-full object-cover"
+                                            src="https://is4-ssl.mzstatic.com/image/thumb/Features114/v4/d7/d2/dd/d7d2ddd3-3f86-741e-0a1f-c76cc9d92471/pr_source.png/380x380cc-60.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-semibold opacity-95 whitespace-no-wrap">
+                                            Alicia Keys
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <p class="opacity-80 text-base whitespace-no-wrap">
+                                    28,000 days
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <p class="opacity-70 whitespace-no-wrap">
+                                    Jul 31, 2015
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-medium bg-white rounded-full text-green-900 leading-none lowercase">
+                                    <span aria-hidden
+                                        class="absolute inset-0 bg-green-300 bg-opacity-50 rounded-full"></span>
+                                    <span class="relative">
+                                        65,300
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pl-3 pr-6 py-5 text-center font-bold border-b border-white border-opacity-10 text-2xl">
+                            <span class="opacity-50">
+                                06.
+                            </span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-14 h-14 border-double border-4 border-white border-opacity-30 rounded-full">
+                                        <img class="w-full h-full rounded-full object-cover"
+                                            src="https://img.discogs.com/o4vqCHP8XfTlc7bda-Fb3dNFzuM=/600x717/smart/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/A-191200-1563434635-1042.jpeg.jpg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-base font-semibold opacity-95 whitespace-no-wrap">
+                                            Aloe Blacc
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm">
+                                <p class="opacity-80 text-base whitespace-no-wrap">
+                                    The Man
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <p class="opacity-70 whitespace-no-wrap">
+                                    Jan 11, 2014
+                                </p>
+                            </td>
+                            <td class="px-5 py-5 border-b border-white border-opacity-10 text-sm text-center">
+                                <span
+                                    class="relative inline-block px-3 py-1 font-medium bg-white rounded-full text-indigo-900 leading-none lowercase">
+                                    <span aria-hidden
+                                        class="absolute inset-0 bg-indigo-300 bg-opacity-50 rounded-full"></span>
+                                    <span class="relative">
+                                        33,152
+                                    </span>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
