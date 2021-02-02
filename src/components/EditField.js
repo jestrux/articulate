@@ -6,11 +6,12 @@ import EditorField from './EditComponent/EditorField';
 export default function EditField({opened = false, selectedField, onChange, onClose}){
     const [field, setField] = useState(null);
     const [autoSave, setAutosave] = useState(false);
+    const autoSaveFields = ['image', 'video'];
 
     useEffect(() => {
         setField(JSON.parse(JSON.stringify({...selectedField})));
         if(!selectedField || selectedField.autoSave === undefined)
-            setAutosave(selectedField && selectedField.type == 'image');
+            setAutosave(selectedField && autoSaveFields.includes(selectedField.type));
         else
             setAutosave(selectedField.autoSave);
     }, [selectedField])

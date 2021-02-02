@@ -102,7 +102,7 @@ export default function BcVideoSearch({
                 { results && results.map(video => (
                     <button type="button" class="bg-gray-100 bg-cover border rounded overflow-x-hidden relative"
                         style={`height: 210px; background-image: url(${video.poster})`}
-                        onClick={() => onChange(video.full)}
+                        onClick={() => onChange(video.preview)}
                         onMouseLeave={() => setPreviewedVideo(null)}
                         onMouseEnter={() => setPreviewedVideo(video.preview)}
                     >

@@ -12,53 +12,81 @@
     <header class="absolute top-0 inset-x-0 flex items-center justify-center z-50">
         <ul id="mainNavigation" class="flex items-center space-x-8 text-sm font-semibold uppercase" onclick="hideMobileNav()">
             <li>
-                <a href="#" class="block px-3 py-4 hover:text-black text-red-500 pointer-events-none">
+                <a href="#" class="block px-3 py-4 hover:text-black text-red-400 pointer-events-none">
                     Home
                 </a>
             </li>
 
             <li>
-                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                <a href="#" class="block px-3 py-4 text-dark text-white text-opacity-75 hover:text-white">
                     About
                 </a>
             </li>
 
             <li>
-                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                <a href="#" class="block px-3 py-4 text-dark text-white text-opacity-75 hover:text-white">
                     Getting Started
                 </a>
             </li>
         
             <li>
-                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                <a href="#" class="block px-3 py-4 text-dark text-white text-opacity-75 hover:text-white">
                     Developers
                 </a>
             </li>
         
             <li>
-                <a href="#" class="block px-3 py-4 text-dark text-black text-opacity-50 hover:text-black">
+                <a href="#" class="block px-3 py-4 text-dark text-white text-opacity-75 hover:text-white">
                     Contact Us
                 </a>
             </li>
             <li>
-                <a href="#" class="block px-3 py-4 text-dark text-gray-700 text-opacity-75 hover:text-black">
+                <a href="#" class="block px-3 py-4 text-dark text-white text-opacity-75 hover:text-white">
                     Help
                 </a>
             </li>
         </ul>
     </header>
 
-    <section class="relative pt-24">
-        <div id="sineCanvas" class="overflow-hidde absolute top-0 -bottom-16 inset-x-0 bg-white z-0">
+    <section class="py-24 pt-40 mb-20 relative overflow-hidden bg-gradient-to-br from-blue-900 to-green-600 opacity-80">
+        <video id="bannerVideo" class="absolute inset-0 w-full h-full object-cover" 
+            style="mix-blend-mode: multiply;"
+            src="https://player.vimeo.com/external/299968768.hd.mp4?s=2103894c3fb2e0538a00cf1dea3ceb36ce494763&profile_id=169&oauth2_token_id=57447761" 
+            loop preload muted autoplay
+            >
+        </video>
+
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10 text-white">
+            <div class="pb-10 pr-12 text-center">
+                <h3 class="font-serif opacity-90 text-4xl font-bold mb-4">
+                    Single Field Editors
+                </h3>
+                <p class="text-xl leading-relaxed max-w-xl mx-auto opacity-80">
+                    Single field editors provide a quick way of editing items on a page that should be editable from editing and formatting simple text elements to changing media items like images and videos.
+                </p>
+                
+                <!-- <button class="inline-flex items-center mt-5 border-2 border-black border-opacity-20 bg-black bg-opacity-80 shadow-sm text-yellow-300 text-opacity-95 text-sm uppercase tracking-wide py-2 px-5 rounded focus:outline-none" -->
+                <button class="mt-6 border-2 uppercase border-white border-opacity-40 font-semibold shadow-sm bg-white bg-opacity-20 text-white text-sm py-2 px-6 rounded"
+                    onclick="editBannerVideo()"
+                >
+                    <!-- <svg class="w-4 h-4 mr-3 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg> -->
+
+                    Change Banner Video
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative pb-2">
+        <div id="sineCanvas" class="overflow-hidde absolute -top-16 inset-x-0 bg-white z-0">
         </div>
 
         <div class="mt-6 max-w-5xl mx-auto">
             <div class="relative z-10 mb-16 text-center">
-                <h3 class="text-fanc opacity-90 text-4xl font-extrabold mb-4">
-                    Single Field Editors
-                </h3>
-                <p class="text-xl text-fanc leading-relaxed max-w-xl mx-auto">
-                    Click any of the images or text items in the banner below to see Articulate's single field editor in action.
+                <p class="text-3xl leading-relaxed max-w-2xl mx-auto font-light">
+                    Click any of the images or text items below to see Articulate's single field editor in action
                 </p>
     
                 <!-- <button class="mt-6 border-2 uppercase border-black border-opacity-30 text-fancy font-semibold shadow-sm bg-transparent text-white text-sm py-2 px-6 rounded">
@@ -167,13 +195,13 @@
 
     <section class="bg-white my-32">
         <div class="max-w-6xl mx-auto flex items-center">
-            <div class="relative w-2/5 mr-12 mb-20">
-                <h3 class="text-3xl font-bold mb-3">
-                    Use the single field editor with
+            <div class="relative w-2/5 mr-12 mb-12">
+                <h3 class="text-3xl leading-normal font-serif font-bold mb-3">
+                    Use the single field editor alongside the
                     component editor for better UX
                 </h3>
                 <p class="text-xl opacity-75 leading-loose max-w-2xl mx-auto">
-                    In this section we use the component editor to change the look and feel of the grid together, but again like the section above, the images are edited by clicking and changing using the field editor.
+                    In this section we use the component editor to change the look and feel of the grid, but just like the section above, you can click on the individual images and change them using the field editor.
                 </p>
 
                 <button class="inline-flex items-center mt-6 border-2 border-black border-opacity-20 bg-black bg-opacity-80 shadow-sm text-yellow-300 text-opacity-95 text-sm uppercase tracking-wide py-2 px-5 rounded"
@@ -210,7 +238,7 @@
         </div>
         <div class="h-full mt-6 max-w-5xl mx-auto relative z-10">
             <div class="relative z-10 mb-16 text-center text-white">
-                <h3 class="text-fanc opacity-90 text-3xl font-bold mb-4">
+                <h3 class="font-serif opacity-90 text-3xl font-bold mb-4">
                     Custom Single Field Editors
                 </h3>
                 <p class="text-lg opacity-75 leading-relaxed max-w-xl mx-auto">
@@ -582,6 +610,31 @@
                 usersImageGridWrapper.innerHTML = grid.render();
                 setupGridInlineEditor();
             });
+        }
+        
+        const bannerVideoEl = document.querySelector("#bannerVideo");
+        let bannerVideoSrc;
+        window.editBannerVideo = function(){
+            const field = {type: "video", value: bannerVideoSrc};
+
+            editField(
+                field,
+                (value) => {
+                    console.log("New banner video: ", value);
+                    if(value == undefined) return;
+                    
+                    bannerVideoSrc = value;
+                    bannerVideoEl.src = "";
+
+                    setTimeout(() => {
+                        bannerVideoEl.oncanplay = function(){
+                            bannerVideoEl.play();
+                        }
+
+                        bannerVideoEl.src = value;
+                    }, 20);
+                }
+            );
         }
     </script>
 </body>
