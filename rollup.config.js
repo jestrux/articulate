@@ -39,10 +39,18 @@ const plugins = [
 	}),
 ];
 
-const output = [
-	{ file: pkg.main, format: 'cjs' },
-	{ file: pkg.module, format: 'es' }
-];
+function output(file, dir){
+	if(dir)
+		return [
+			{ dir: "dist/cjs/", format: 'cjs' },
+			// { dir: "dist/es/", format: 'es' }
+		];
+
+	return [
+		{ file: "dist/cjs/"+file, format: 'cjs' },
+		// { file: "dist/es/"+file, format: 'es' }
+	];
+};
 
 export default [
 	{
@@ -73,13 +81,32 @@ export default [
 		plugins
 	},
 	// {
-	// 	input: 'src/main.js',
-	// 	output,
+	// 	input: 'src/component-picker.js',
+	// 	output: {
+	// 		name: 'ArticulateComponentPicker',
+	// 		file: "dist/umd/component-picker.js",
+	// 		format: 'umd'
+	// 	},
 	// 	plugins
 	// },
-	// {
-	// 	input: 'src/edit-field.js',
-	// 	output,
-	// 	plugins
-	// },
+	{
+		input: 'src/main.js',
+		output: output("articulate.js"),
+		plugins
+	},
+	{
+		input: 'src/field-editor.js',
+		output: output("field-editor.js"),
+		plugins
+	},
+	{
+		input: 'src/component-editor.js',
+		output: output("component-editor.js"),
+		plugins
+	},
+	{
+		input: 'src/component-picker.js',
+		output: output("component-picker.js", true),
+		plugins
+	},
 ];

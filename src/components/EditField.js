@@ -1,9 +1,12 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useContext } from 'preact/hooks';
 
 import EditorField from './EditComponent/EditorField';
+import ArticulateConfig from "../ArticulateConfig";
 
 export default function EditField({opened = false, selectedField, onChange, onClose}){
+    const context = useContext(ArticulateConfig);
+    
     const [field, setField] = useState(null);
     const [autoSave, setAutosave] = useState(false);
     const autoSaveFields = ['image', 'video'];
@@ -18,7 +21,9 @@ export default function EditField({opened = false, selectedField, onChange, onCl
 
     function handleOnChange(value){
         setField({...field, value});
-        onChange(value);
+
+        if(context.autoSave)
+            onChange(value);
 
         if(autoSave) onClose()
     }
@@ -53,11 +58,13 @@ export default function EditField({opened = false, selectedField, onChange, onCl
                     <form action="#" onSubmit={handleSaveElement}>
                         { field && <EditorField field={field} onChange={handleOnChange} /> }
 
-                        {/* <div className="mt-3 flex justify-end">
-                            <button type="submit" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full">
-                                Save
-                            </button>
-                        </div> */}
+                        { !context.autoSave && (
+                            <div className="mt-3 flex justify-end">
+                                <button type="submit" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full">
+                                    Save
+                                </button>
+                            </div>
+                        ) }
                     </form>
                 </div>
             </div>

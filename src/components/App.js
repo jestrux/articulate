@@ -87,7 +87,8 @@ export default function App({articulateRef}){
         <ArticulateConfig.Provider value={articulateRef}>
             <div class="max-w-5xl mx-auto">
                 <PickComponent 
-                    opened={showComponentPicker} close={() => setShowComponentPicker(false)} 
+                    opened={showComponentPicker} 
+                    onClose={() => setShowComponentPicker(false)} 
                     onComponentPicked={handleComponentPicked}
                 />
                 <EditComponent 

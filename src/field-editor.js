@@ -49,7 +49,7 @@ function FieldEditor({articulateRef}){
 
 function ArticulateFieldEditor(userOptions = {}){
 	const defaultOptions = {
-		
+		autoSave: true
 	};
 
 	const { extend, ...options } = userOptions;
