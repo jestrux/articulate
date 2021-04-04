@@ -45,7 +45,7 @@ export default function LinkField({
         setError(null);
         if(val && val.length){
             setVal("");
-            onChange("")
+            // onChange("")
         }
         else{
             try {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Trivia</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        #screens .TriviaCard,
+        #screens .TriviaCard > div,
+        #screens .TriviaCard > div > div{
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #screens .TriviaCard p{
+            font-size: 3vh !important;
+        }
+
+        .TemplateOneAnswer input:checked + label{
+            background: #fff;
+            color: #888888;
+        }
+
+        .TemplateTwoAnswer input:not(:checked) + label div{
+            display: none;
+        }
+
+        .TemplateThreeAnswer input:checked + label{
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .TemplateThreeAnswer input:checked + label > div{
+            border-color: #fff;
+        }
+
+        .TemplateThreeAnswer input:not(:checked) + label > div > div{
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="screens"></div>
+    
+    <script src="../../dist/umd/articulate.js"></script>
+    
+    <script type="module">
+        import * as TriviaTemplates from './templates/index.js';
+        import sampleGame from './sample-game.js';
+
+        window.addEventListener("load", () => {
+            window.articulate = new Articulate("#screens", {
+                lean: true,
+                editOnFocus: true,
+                unsplashClientId: "17ef130962858e4304efe9512cf023387ee5d36f0585e4346f0f70b2f9729964",
+                uiElements: {...TriviaTemplates},
+                elements: sampleGame,
+                // wrapperClass: "grid grid-cols-4 gap-3",
+                itemClass: "relative TriviaCard",
+                onChange(html, elements){
+                    console.log("On change: ", html, elements);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function addScreen(){
+            articulate.pickComponent();
+        }
+    </script>
+</body>
+
+</html>

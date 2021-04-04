@@ -48,7 +48,7 @@ export default function EditComponent({opened = false, selectedElement, onChange
 
         setEl({...el, options});
         
-        onChange(options);
+        onChange({...el, options});
     }
 
     function handleSaveElement(e){
@@ -82,10 +82,6 @@ export default function EditComponent({opened = false, selectedElement, onChange
                                 <EditorField field={field} onChange={(value) => handleChange(value, field.name)} />
                             </div>
                         )) }
-
-                        {/* <button type="submit" class="px-5 py-2 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full w-full">
-                            Save Changes
-                        </button> */}
                     </form>
                 </div>
 

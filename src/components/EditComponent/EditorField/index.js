@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import CustomEditorFields from "../../CustomEditorFields";
+import CustomEditFields from "./CustomEditFields";
 import RadioField from './RadioField';
 
 export default function EditorField({field, nolabel, onChange}){
@@ -8,16 +8,20 @@ export default function EditorField({field, nolabel, onChange}){
     const showLabel = !nolabel;
 
     function handleChange(e){
-        let newValue = e.target.value;
-        
-        if(type == "boolean")
-            newValue = e.target.checked;
+        let newValue = e;
+
+        if(e && e.target){
+            newValue = e.target.value;
+
+            if(type == "boolean")
+                newValue = e.target.checked;
+        }
             
         onChange(newValue);
     }
 
     function fieldInput(){
-        const CustomField = CustomEditorFields[`${field.type}`];
+        const CustomField = CustomEditFields[`${field.type}`];
 
         if(CustomField)
             return (
