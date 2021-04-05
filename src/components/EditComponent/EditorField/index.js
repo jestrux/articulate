@@ -1,11 +1,16 @@
 import { h } from 'preact';
 import CustomEditFields from "./CustomEditFields";
+import CustomInputField from "./CustomInputField";
 import RadioField from './RadioField';
 
-export default function EditorField({field, nolabel, onChange}){
+export default function EditorField({
+    inlineCustomEditor = true, 
+    field, nolabel, onChange,
+    onEditCustomField
+}){
     const { name, label, choices, defaultValue, value, type, ...fieldMeta } = field;
     // const showLabel = !nolabel && !['image', 'youtube'].includes(field.type);
-    const showLabel = !nolabel;
+    const showLabel = !nolabel && !inlineCustomEditor;
 
     function handleChange(e){
         let newValue = e;
@@ -23,12 +28,22 @@ export default function EditorField({field, nolabel, onChange}){
     function fieldInput(){
         const CustomField = CustomEditFields[`${field.type}`];
 
-        if(CustomField)
-            return (
-                <CustomField 
-                    field={field} onChange={onChange} 
-                />
-            );
+        if(CustomField){
+            if(inlineCustomEditor)
+                return (
+                    <CustomField 
+                        field={field} onChange={onChange} 
+                    />
+                );
+            else{
+                return(
+                    <CustomInputField 
+                        field={field}
+                        onChange={onEditCustomField} 
+                    />
+                )
+            }
+        }
             
         switch (field.type) {
             case 'choice':

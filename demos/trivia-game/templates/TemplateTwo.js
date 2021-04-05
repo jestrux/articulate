@@ -67,7 +67,7 @@ TemplateTwo.doRender = function (options) {
     }
 
     return `
-            <div class="rounded-lg h-full flex-shrink-0 text-md p-3 flex flex-col sjustify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
+            <div class="rounded-lg overflow-hidden flex-shrink-0 text-md p-3 flex flex-col sjustify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
                 <div class="flex w-full h-40 mb-1 relative rounded-lg overflow-hidden bg-white bg-opacity-50"
                     style="min-height: 200px"
                 >

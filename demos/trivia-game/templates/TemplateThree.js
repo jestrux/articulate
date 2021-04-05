@@ -80,7 +80,7 @@ TemplateThree.doRender = function(options){
     answers += `</div>`;
 
     return `
-        <div class="rounded-lg h-full flex-shrink-0 text-md flex flex-col justify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
+        <div class="rounded-lg overflow-hidden flex-shrink-0 text-md flex flex-col justify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
             <p class="flex-1 flex flex-col items-center justify-center mt-3 px-3 font-black leading-normal text-center tracking-wide tracking-wider">
                 ${options.question}
             </p>

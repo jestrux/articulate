@@ -8,12 +8,14 @@ function Articulate(containerId, userOptions = {}){
 	const defaultOptions = {
 		uiElements: UIElements,
 		elements: [],
+		autoSaveCustomField: true,
 		onComponentPicked: component => {
 			this.editElement(component);
 		},
-		onElementAdded:  el => {},
-		onElementUpdated:  el => {},
-		onElementsChanged:  elements => {},
+		onCustomFieldChanged: el => {},
+		onElementAdded: el => {},
+		onElementUpdated: el => {},
+		onElementsChanged: elements => {},
 	};
 
 	const { extend, ...options } = userOptions;

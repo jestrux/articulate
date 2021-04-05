@@ -67,7 +67,7 @@ TemplateOne.doRender = function(options) {
     }
 
     return `
-        <div class="rounded-lg h-full flex-shrink-0 text-md p-3 flex flex-col justify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
+        <div class="rounded-lg overflow-hidden flex-shrink-0 text-md p-3 flex flex-col justify-between items-center space-y-5 border-2 bg-gradient-to-br from-${options.theme}-600 via-${options.theme}-500 to-${options.theme}-500 text-white">
             <img class="rounded-lg h-40 w-full object-cover mb-3" src="${options.image}" />
             <p class="font-black leading-normal text-center tracking-wide tracking-wider">
                 ${options.question}

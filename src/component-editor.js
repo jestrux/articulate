@@ -43,7 +43,8 @@ function ComponentEditor({articulateRef}){
 
 function ArticulateComponentEditor(userOptions = {}){
 	const defaultOptions = {
-		
+		autoSaveCustomField: true,
+		onCustomFieldChanged: el => {},
 	};
 
 	const { extend, ...options } = userOptions;

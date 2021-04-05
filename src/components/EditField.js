@@ -22,10 +22,12 @@ export default function EditField({opened = false, selectedField, onChange, onCl
     function handleOnChange(value){
         setField({...field, value});
 
-        if(context.autoSave)
+        if(context.autoSaveCustomField){
             onChange(value);
 
-        if(autoSave) onClose()
+            onClose();
+            // if(autoSave) onClose();
+        }
     }
 
     function handleSaveElement(e){
@@ -58,7 +60,7 @@ export default function EditField({opened = false, selectedField, onChange, onCl
                     <form action="#" onSubmit={handleSaveElement}>
                         { field && <EditorField field={field} onChange={handleOnChange} /> }
 
-                        { !context.autoSave && (
+                        { !context.autoSaveCustomField && (
                             <div className="mt-3 flex justify-end">
                                 <button type="submit" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full">
                                     Save

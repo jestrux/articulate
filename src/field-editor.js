@@ -6,7 +6,7 @@ import ArticulateConfig from "./ArticulateConfig";
 import EditField from "./components/EditField";
 
 
-function FieldEditor({articulateRef}){
+export function FieldEditor({articulateRef}){
 	const [showFieldEditor, setShowFieldEditor] = useState(false);
 	const [selectedField, setSelectedField] = useState(null);
 
@@ -49,7 +49,7 @@ function FieldEditor({articulateRef}){
 
 function ArticulateFieldEditor(userOptions = {}){
 	const defaultOptions = {
-		autoSave: true
+		autoSaveCustomField: true
 	};
 
 	const { extend, ...options } = userOptions;

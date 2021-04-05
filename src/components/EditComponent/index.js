@@ -1,11 +1,14 @@
 import { h } from 'preact';
-import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
+import { useContext, useEffect, useState } from 'preact/hooks';
 import ArticulateConfig from '../../ArticulateConfig';
+import EditField from '../EditField';
 import EditorField from './EditorField';
 
 export default function EditComponent({opened = false, selectedElement, onChange, onClose}){
     const [el, setEl] = useState(null);
-    const { uiElements } = useContext(ArticulateConfig);
+    const { uiElements, onCustomFieldChanged = () => {} } = useContext(ArticulateConfig);
+    const [showFieldEditor, setShowFieldEditor] = useState(false);
+	const [selectedField, setSelectedField] = useState(null);
 
     if(!uiElements) return null;
 
@@ -57,6 +60,23 @@ export default function EditComponent({opened = false, selectedElement, onChange
         onClose();
     }
 
+    function handleChangeCustomField(field){
+        setSelectedField({...field, autoSave: true});
+        setTimeout(() => {
+            setShowFieldEditor(true);
+        }, 100);
+    }
+
+    function handleCustomFieldChanged(value){
+        handleChange(value, selectedField.name);
+		onCustomFieldChanged(selectedField, value);
+	}
+
+	function handleCloseCustomFieldEditor(){
+		setShowFieldEditor(false);
+		onCustomFieldChanged(selectedField, undefined);
+	}
+
     return (
         <div class={`flex fixed inset-0 z-50 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
@@ -76,15 +96,26 @@ export default function EditComponent({opened = false, selectedElement, onChange
                 </div>
 
                 <div class="p-4 flex-1 overflow-y-auto">
-                    <form action="#" onSubmit={handleSaveElement}>
+                    {/* <form action="#" onSubmit={handleSaveElement}> */}
                         { fields().map(field => (
                             <div class="mb-4">
-                                <EditorField field={field} onChange={(value) => handleChange(value, field.name)} />
+                                <EditorField 
+                                    field={field} 
+                                    inlineCustomEditor={false}
+                                    onEditCustomField={handleChangeCustomField}
+                                    onChange={(value) => handleChange(value, field.name)} 
+                                />
                             </div>
                         )) }
-                    </form>
-                </div>
+                    {/* </form> */}
 
+                    <EditField
+                        selectedField={selectedField} 
+                        opened={showFieldEditor} 
+                        onChange={handleCustomFieldChanged}
+                        onClose={handleCloseCustomFieldEditor}
+                    />
+                </div>
             </div>
         </div>
     );
