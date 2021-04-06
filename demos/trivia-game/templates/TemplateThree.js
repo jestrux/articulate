@@ -3,7 +3,7 @@ function TemplateThree (values){
     this.render = () => TemplateThree.doRender(this.values);
 }
 
-TemplateThree.label = 'Template Three';
+TemplateThree.label = 'Image Answers';
 
 TemplateThree.props = {
     theme: {

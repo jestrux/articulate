@@ -41,12 +41,12 @@
 </head>
 
 <body>
-    <div class="h-scree fle flex-co items-center py-12">
-        <div class="flex items-center justify-center mb-12">
+    <div class="h-scree fle flex-co items-center pb-12">
+        <div class="flex items-center justify-center mb-6 sticky py-6 top-0 bg-white z-50">
             <h1 class="text-center text-3xl tracking-widest uppercase font-hairline">
                 Tech trivia
             </h1>
-            <button onclick="addScreen()" class="ml-6 px-3 py-1 rounded-full uppercase text-xs tracking-widest text-red-500 bg-transparent border border-red-500">
+            <button onclick="addScreen()" class="ml-6 px-3 py-1 rounded-full uppercase text-xs tracking-widest text-red-500 bg-transparent border border-red-500 focus:outline-none">
                 Add Screen
             </button>
         </div>
@@ -71,6 +71,8 @@
                 elements: sampleGame,
                 wrapperClass: "grid grid-cols-4 gap-3",
                 itemClass: "relative TriviaCard",
+                centerComponentPicker: true,
+                blurComponentPicker: true,
                 onChange(html, elements){
                     console.log("On change: ", html, elements);
                 }

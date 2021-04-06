@@ -3,7 +3,7 @@ function TemplateOne (values){
     this.render = () => TemplateOne.doRender(this.values);
 }
 
-TemplateOne.label = 'Template One';
+TemplateOne.label = 'Regular';
 
 TemplateOne.props = {
     theme: {

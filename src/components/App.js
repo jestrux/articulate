@@ -74,6 +74,10 @@ export default function App({articulateRef}){
             ];
 
             articulateRef.onElementAdded(element);
+
+            setTimeout(() => {
+                document.querySelector(`#ArticulateElement${element.id}`).scrollIntoView()
+            },20);
         }
         else{
             newElements = elements.map(el => {

@@ -25,7 +25,7 @@ export default function PreviewElement({element, selected}){
     const uiComponent = new uiElements[component](options);
 
     return (
-        <div class={`relative overflow-hidden ${itemClass}`}>
+        <div id={`ArticulateElement${element.id}`} class={`relative overflow-hidden ${itemClass}`}>
             { h( "div", {innerHTML: uiComponent.render()}) }
 
             { !editOnFocus && renderActionButtons() }

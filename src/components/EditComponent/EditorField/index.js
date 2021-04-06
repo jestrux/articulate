@@ -1,4 +1,6 @@
 import { h } from 'preact';
+import { useEffect, useRef } from 'preact/hooks';
+import autosize from 'autosize';
 import CustomEditFields from "./CustomEditFields";
 import CustomInputField from "./CustomInputField";
 import RadioField from './RadioField';
@@ -11,6 +13,11 @@ export default function EditorField({
     const { name, label, choices, defaultValue, value, type, ...fieldMeta } = field;
     // const showLabel = !nolabel && !['image', 'youtube'].includes(field.type);
     const showLabel = !nolabel && !inlineCustomEditor;
+    const expandableTextArea = useRef(null);
+    useEffect(() => {
+        if(expandableTextArea != null)
+            autosize(expandableTextArea.current);
+    }, []);
 
     function handleChange(e){
         let newValue = e;
@@ -80,8 +87,13 @@ export default function EditorField({
                     </label>
                 );
             case 'long-text':
+            case 'long text':
                 return(
-                    <textarea required={!field.optional} class="border-2 rounded text-lg min-h-10 w-full px-3 py-2" placeholder={field.defaultValue} rows="5" value={field.value} onInput={handleChange}
+                    <textarea ref={expandableTextArea} required={!field.optional} class="border-2 rounded text-lg w-full px-3 py-2 resize-none" 
+                        rows="1"
+                        placeholder={field.placeholder} 
+                        value={field.value} 
+                        onInput={handleChange}
                         {...fieldMeta}
                     ></textarea>
                 );

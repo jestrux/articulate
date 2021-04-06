@@ -83,12 +83,12 @@ export default function EditComponent({opened = false, selectedElement, onChange
                 onClick={onClose}></div>
                 
             <div class={`ml-auto flex flex-col h-full relative z-10 w-1/3 max-w-sm bg-white shadow overflow-hidden transition ${!opened && 'transform translate-x-full'}`}>
-                <div class="p-4 border-b flex items-center justify-between">
-                    <h3 class="text-xl font-semibold">
+                <div class="mt-2 flex items-center justify-between">
+                    {/* <h3 class="text-xl font-semibold">
                         Customize { el ? el.label || 'Component' : '' }
-                    </h3>
+                    </h3> */}
 
-                    <button class="focus:outline-none w-6 h-6 rounded-full p-0 flex items-center justify-center bg-gray-300"
+                    <button class="focus:outline-none rounded-full p-0 flex items-center justify-center bg-transparent absolute top-3 right-3"
                         onClick={onClose}
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>

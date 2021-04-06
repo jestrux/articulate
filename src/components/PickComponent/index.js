@@ -3,23 +3,25 @@ import { useContext } from 'preact/hooks';
 import ArticulateConfig from '../../ArticulateConfig';
 
 export default function PickComponent({opened = false, onClose, onComponentPicked}){
-    const { uiElements, centerComponentPicker } = useContext(ArticulateConfig);
+    const { uiElements, centerComponentPicker, blurComponentPicker } = useContext(ArticulateConfig);
 
     if(!uiElements) {
         console.error("Please add some ui elements.");
         return null;
     }
 
-    let placementClasses = `h-full w-1/3 max-w-sm ${!opened && ' -translate-x-full'}`;
+    let placementClasses = `h-full w-1/3 max-w-sm ${!opened && ' -translate-x-full opacity-0'}`;
     if(centerComponentPicker)
-        placementClasses = `h-4/5 w-full max-w-5xl m-auto rounded-md ${!opened && ' -translate-y-full'}`;
+        placementClasses = `w-full max-w-5xl m-auto rounded-md ${!opened && ' -translate-y-1/4 opacity-0'}`;
 
     return (
         <div class={`fixed flex inset-0 z-50 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
                 onClick={onClose}></div>
 
-            <div class={`flex flex-col relative z-10 bg-gray-200 shadow overflow-hidden transition transform ${placementClasses}`}>
+            <div class={`flex flex-col relative z-10 bg-gray-200 shadow overflow-hidden transition transform ${placementClasses}`}
+                style={`${centerComponentPicker && 'max-height:85%'}; ${blurComponentPicker ? 'background-color: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px);' : ''}`}
+            >
                 <div class="p-4 border-b border-gray-300 flex items-center justify-between">
                     <h3 class="text-xl font-semibold">
                         Pick a Component
