@@ -6,7 +6,7 @@ import ArticulateConfig from "./ArticulateConfig";
 import EditField from "./components/EditField";
 
 
-export function FieldEditor({articulateRef}){
+function FieldEditor({articulateRef}){
 	const [showFieldEditor, setShowFieldEditor] = useState(false);
 	const [selectedField, setSelectedField] = useState(null);
 

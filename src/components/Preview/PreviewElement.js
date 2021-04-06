@@ -1,11 +1,15 @@
 import { h } from 'preact';
 import { useContext } from 'preact/hooks';
 import ArticulateConfig from '../../ArticulateConfig';
+import BcQuillEditor from "./BcQuillEditor";
 
-export default function PreviewElement({element, selected}){
+export default function PreviewElement({element, selected, onTextChange}){
     const { uiElements, itemClass, editElement, removeElement, editOnFocus } = useContext(ArticulateConfig);
 
     const { options, component } = element;
+
+    if(component == "BcText")
+        return <BcQuillEditor options={options} onChange={onTextChange} />;
 
     function renderActionButtons(){
         return (

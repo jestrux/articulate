@@ -25,8 +25,7 @@ export default function EditField({opened = false, selectedField, onChange, onCl
         if(context.autoSaveCustomField){
             onChange(value);
 
-            onClose();
-            // if(autoSave) onClose();
+            if(autoSave) onClose();
         }
     }
 

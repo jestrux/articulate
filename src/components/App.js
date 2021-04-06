@@ -110,7 +110,10 @@ export default function App({articulateRef}){
                 onChange={handleSaveElement}
                 onSave={handleSaveElement}
             />
-            <Preview elements={elements} selectedElement={selectedElement} />
+            <Preview 
+                elements={elements} selectedElement={selectedElement} 
+                onTextChange={handleSaveElement}
+            />
         </ArticulateConfig.Provider>
     );
 }
