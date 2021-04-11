@@ -43,6 +43,28 @@ Although the initial idea was for articulate to be a simple library for content 
 
 Component picker can be used to pick premade templates, for the default library that was made for building blogs, the premade templates were `Text`, `Image`, `Alert`, `Quote` all of which can be found [here 👉](/src/components/UIElements). Take a look at them to get a sense of the format for Articulate Templates.
 
+Here's a quick example of how to use the component picker.
+
+```html
+<button onclick="addItem()">Add Item</button>
+
+<script src="path/to/component-picker.js"></script>
+<script type="module">
+    import ImageGrid from "./image-grid-component.js";
+    window.ImageGrid = ImageGrid;
+
+    const { pickComponent } = new ArticulateComponentPicker();
+
+    window.addItem = pickComponent(component => {
+        if(component != undefined){
+            const div = document.createElement('div');
+            div.innerHTML += component.render();
+            document.body.appendChild(div.firstChild);
+        }
+    });
+</script>
+```
+
 ## Other Customizations
 
 |Prop|Description|Default|
@@ -55,7 +77,36 @@ Component picker can be used to pick premade templates, for the default library 
 
 ![Component editor](/screenshots/component-editor.gif?raw=true "Component editor")
 
-Component editor can be used to edit components. Now while this is intended to work with premade templates, it can also be used to edit multiple fields(see site content editor demo here) [here 👉](/src/components/UIElements).
+Component editor can be used to edit components. Now while this is intended to work with premade templates. 
+
+Here's how you can use the `ComponentEditor`
+
+```html
+<script src="path/to/field-editor.js"></script>
+<script type="module">
+    import ImageGrid from "./image-grid-component.js";
+    window.ImageGrid = ImageGrid;
+
+    const { editComponent, uiElements } = new ArticulateComponentEditor({
+        uiElements: { ImageGrid }
+    });
+
+    const usersGrid = {
+        label: "Image Grid",
+        component: "ImageGrid"
+    };
+
+    editComponent(usersGrid, ({options}) => {
+        grid.values = {
+            ...grid.values, ...options
+        };
+
+        usersImageGridWrapper.innerHTML = grid.render();
+    });
+</script>
+```
+
+The demo in the gif above was captured from the content-editor demo [here 👉](/src/demos/content-editor/index.html).
 
 ## Other Customizations
 
