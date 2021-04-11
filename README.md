@@ -65,7 +65,7 @@ Here's a quick example of how to use the component picker.
 </script>
 ```
 
-## Other Customizations
+#### Other Customizations
 
 |Prop|Description|Default|
 |--|--|--|
@@ -108,7 +108,7 @@ Here's how you can use the `ComponentEditor`
 
 The demo in the gif above was captured from the content-editor demo [here 👉](/src/demos/content-editor/index.html).
 
-## Other Customizations
+#### Other Customizations
 
 |Prop|Description|Default|
 |--|--|--|
@@ -166,7 +166,7 @@ new Articulate("#article", {
 
 You can see the rest of the code above [here](/index.html)
 
-## Other Customizations
+#### Other Customizations
 
 |Prop|Description|Default|
 |--|--|--|
