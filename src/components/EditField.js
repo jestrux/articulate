@@ -36,7 +36,7 @@ export default function EditField({opened = false, selectedField, onChange, onCl
     }
 
     return (
-        <div class={`flex fixed inset-0 z-50 ${!opened && 'pointer-events-none'}`}>
+        <div class={`flex fixed inset-0 z-999 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
                 onClick={onClose}></div>
                 
@@ -59,9 +59,11 @@ export default function EditField({opened = false, selectedField, onChange, onCl
                     <form action="#" onSubmit={handleSaveElement}>
                         { field && <EditorField field={field} onChange={handleOnChange} /> }
 
-                        { !context.autoSaveCustomField && (
+                        { (!context.autoSaveCustomField || typeof context.onSaveCustomField == 'function') && (
                             <div className="mt-3 flex justify-end">
-                                <button type="submit" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full">
+                                <button type="button" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full"
+                                    onClick={() => {onClose(); context.onSaveCustomField(field)}}
+                                >
                                     Save
                                 </button>
                             </div>

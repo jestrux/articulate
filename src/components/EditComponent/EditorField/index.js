@@ -4,6 +4,7 @@ import autosize from 'autosize';
 import CustomEditFields from "./CustomEditFields";
 import CustomInputField from "./CustomInputField";
 import RadioField from './RadioField';
+import LinkField from './BcLinkField';
 
 export default function EditorField({
     inlineCustomEditor = true, 
@@ -15,9 +16,9 @@ export default function EditorField({
     const showLabel = !nolabel && !inlineCustomEditor;
     const expandableTextArea = useRef(null);
     useEffect(() => {
-        if(expandableTextArea != null)
+        if(expandableTextArea && expandableTextArea.current)
             autosize(expandableTextArea.current);
-    }, []);
+    }, [type]);
 
     function handleChange(e){
         let newValue = e;
@@ -78,6 +79,10 @@ export default function EditorField({
             case 'radio':
                 return(
                     <RadioField field={field} onChange={handleChange} />
+                );
+            case 'link':
+                return(
+                    <LinkField field={field} onChange={handleChange} />
                 );
             case 'boolean':
                 return(

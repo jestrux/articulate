@@ -6,7 +6,7 @@ import EditorField from './EditorField';
 
 export default function EditComponent({opened = false, selectedElement, onChange, onClose}){
     const [el, setEl] = useState(null);
-    const { uiElements, onCustomFieldChanged = () => {} } = useContext(ArticulateConfig);
+    const { uiElements, onCustomFieldChanged = () => {}, ...context } = useContext(ArticulateConfig);
     const [showFieldEditor, setShowFieldEditor] = useState(false);
 	const [selectedField, setSelectedField] = useState(null);
 
@@ -56,7 +56,7 @@ export default function EditComponent({opened = false, selectedElement, onChange
 
     function handleSaveElement(e){
         e.preventDefault();
-        onChange(el.options);
+        onChange({...el, options});
         onClose();
     }
 
@@ -78,7 +78,7 @@ export default function EditComponent({opened = false, selectedElement, onChange
 	}
 
     return (
-        <div class={`flex fixed inset-0 z-50 ${!opened && 'pointer-events-none'}`}>
+        <div class={`flex fixed inset-0 z-999 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
                 onClick={onClose}></div>
                 
@@ -107,6 +107,16 @@ export default function EditComponent({opened = false, selectedElement, onChange
                                 />
                             </div>
                         )) }
+                        
+                        { typeof context.onComponentSaved == 'function' && (
+                            <div className="mt-3 flex justify-end">
+                                <button type="button" class="px-5 py-1 border-2 border-red-500 uppercase text-xs tracking-wide font-semibold bg-red-500 text-white rounded-full"
+                                    onClick={() => {onClose(); context.onComponentSaved(el)}}
+                                >
+                                    Save Changes
+                                </button>
+                            </div>
+                        ) }
                     {/* </form> */}
 
                     <EditField

@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 
-import BcLinkField from "../BcLinkField";
+import BcLinkField from "../../BcLinkField";
 import BcUnsplashSearch from './BcUnsplashSearch';
 import BcGiphySearch from './BcGiphySearch';
 import BCMemeGenerator from './BCMemeGenerator';
