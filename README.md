@@ -41,10 +41,10 @@ Although the initial idea was for articulate to be a simple library for content 
 
 ![Component picker](/screenshots/pick-component.png?raw=true "Component picker")
 
-Component picker can be used to pick premade templates, for the default library that was made for building blogs, the premade templates were `Text`, `Image`, `Alert`, `Quote` all of which can be found here 👉. Take a look at them to get a sense of the format for Articulate Templates.
+Component picker can be used to pick premade templates, for the default library that was made for building blogs, the premade templates were `Text`, `Image`, `Alert`, `Quote` all of which can be found [here 👉](/src/components/UIElements). Take a look at them to get a sense of the format for Articulate Templates.
 
 
-Most times however you'll probably be working with custom components, to see an example of custom components, see the example code below.
+Most times however, you'll probably be working with custom components, to see an example of custom components, see the example code below.
 
 
 ```html
