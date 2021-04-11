@@ -43,6 +43,26 @@ Although the initial idea was for articulate to be a simple library for content 
 
 Component picker can be used to pick premade templates, for the default library that was made for building blogs, the premade templates were `Text`, `Image`, `Alert`, `Quote` all of which can be found [here 👉](/src/components/UIElements). Take a look at them to get a sense of the format for Articulate Templates.
 
+## Other Customizations
+
+|Prop|Description|Default|
+|--|--|--|
+|`centerComponentPicker`| Show component picker at the center of the screen  | false |
+|`blurComponentPicker`| Add blur effect to component picker, see demo image above | false |
+
+
+### ComponentEditor
+
+![Component editor](/screenshots/component-editor.gif?raw=true "Component editor")
+
+Component editor can be used to edit components. Now while this is intended to work with premade templates, it can also be used to edit multiple fields(see site content editor demo here) [here 👉](/src/components/UIElements).
+
+## Other Customizations
+
+|Prop|Description|Default|
+|--|--|--|
+|`onComponentSaved`| Callback for when the component save button is clicked | null |
+
 
 Most times however, you'll probably be working with custom components, to see an example of custom components, see the example code below.
 

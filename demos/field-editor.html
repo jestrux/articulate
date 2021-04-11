@@ -602,9 +602,9 @@
         setupGridInlineEditor();
 
         window.editUsersImageGrid = function(){
-            editComponent(usersGrid, (newValues) => {
+            editComponent(usersGrid, ({options}) => {
                 grid.values = {
-                    ...grid.values, ...newValues
+                    ...grid.values, ...options
                 };
 
                 usersImageGridWrapper.innerHTML = grid.render();
