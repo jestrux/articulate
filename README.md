@@ -106,7 +106,7 @@ Here's how you can use the `ComponentEditor`
 </script>
 ```
 
-The demo in the gif above was captured from the content-editor demo [here 👉](/src/demos/content-editor/index.html).
+The code above and the gif demo was captured from the content-editor demo [here 👉](/src/demos/content-editor/index.html).
 
 #### Other Customizations
 
