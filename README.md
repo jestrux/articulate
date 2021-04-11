@@ -169,7 +169,7 @@ The code above and the gif demo was captured from the content-editor demo [here 
 
 ### Trivia Game Creator
 
-![Nerd Trivia](/screenshots/nerd-trivia.jpg?raw=true "Nerd Trivia")
+![Nerd Trivia](/screenshots/nerd-trivia2.jpg?raw=true "Nerd Trivia")
 
 Show case of using the full Articulate to create screens for a trivia game based on three preset templates.
 
