@@ -1,46 +1,121 @@
-# rollup-starter-lib
+# Articulate
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/rollup/rollup-starter-lib.svg)](https://greenkeeper.io/)
+Javascript library for dynamic content creation.
 
-This repo contains a bare-bones example of how to create a library using Rollup, including importing a module from `node_modules` and converting it from CommonJS.
 
-We're creating a library called `how-long-till-lunch`, which usefully tells us how long we have to wait until lunch, using the [ms](https://github.com/zeit/ms) package:
+## The Basics
+In the beginning Articulate started as a generator for articles heavily inspired by medium and if you're working on a client website with blog or article content, this would be a nice thing you add to the blog creation page of the CMS.
 
-```js
-console.log('it will be lunchtime in ' + howLongTillLunch());
+![Medium Style Text Editor](/screenshots/sample-blog.jpg?raw=true "Medium Style Text Editor")
+
+Like medium, Articulate provides an option to easily add in article elements beyond just text. Things like quotes, images, youtube videos e.t.c. 
+
+Here's an example on how a user can search an image on unsplash and add it to the article.
+
+![Image picker](/screenshots/image-picker.jpg?raw=true "Image picker")
+
+
+For a basic usage of Articulate, you just include it in your project, and then all that's left is to add this one line.
+
+```javascript
+new Articulate("#articleBody");
 ```
 
-## Getting started
+## Custom UI elements
 
-Clone this repository and install its dependencies:
+By default articulate ships with five ui elements `Image`, `Alert`, `Quote` and `Youtube Video` which are are all basic javascript classes. Articulate also provides an easy way to add in your own ui elements should you need to. Here's how you do that:
 
-```bash
-git clone https://github.com/rollup/rollup-starter-lib
-cd rollup-starter-lib
+```javascript
+import SomeUiElement from './path/to/SomeUiElement';
+new Articulate("#articleBody", {
+    uiElements: { SomeUiElement }
+});
+```
+
+
+## Composition
+
+Although the initial idea was for articulate to be a simple library for content generation, the latest verion simply composes three core building blocks `ComponentPicker`, `ComponentEditor` and `FieldEditor` each of which can be imported separately and used on its own.
+
+### ComponentPicker
+
+Component picker can be used to pick premade templates, for the default library that was made for building blogs, the premade templates were `Text`, `Image`, `Alert`, `Quote` all of which can be found here 👉. Take a look at them to get a sense of the format for Articulate Templates.
+
+
+Most times however you'll probably be working with custom components, to see an example of custom components, see the example code below.
+
+
+```html
+<button onclick="addScreen()">
+    Add Screen
+</button>
+
+<script type="module" src="path/to/articulate.js"></script>
+
+<script type="module">
+    // Import your components
+    import * as TriviaTemplates from './trivia-game/components';
+
+    window.addEventListener("load", () => {
+        window.articulate = new Articulate("#screens", {
+            lean: true,
+            editOnFocus: true,
+            // tell articulate use your components instead of the default components
+            uiElements: {...TriviaTemplates},
+            uiElements: {...TriviaTemplates},
+            className: "TriviaCard"
+        });
+    });
+</script>
+
+<script>
+    function addScreen(){
+        if(articulate)
+            articulate.add();
+    }
+</script>
+```
+
+This code was taken from the trivia code game demo found [here](/public/demos/trivia-game/index.html) and which could be used to make something that looks like this 👇
+
+![Nerd Trivia](/screenshots/nerd-trivia.jpg?raw=true "Nerd Trivia")
+
+
+If instead you want to add your components on top of the default articulate copmonents, you can do that by using `extend` like so 👇
+
+```javascript
+new Articulate("#article", {
+    extend: {
+        uiElements: { BcCtaBanner }
+    }
+});
+```
+
+You can see the rest of the code above [here](/index.html)
+
+## Other Customizations
+
+|Prop|Description|Default|
+|--|--|--|
+|`editOnFocus`| Whether to edit on focus or when edit button is clicked | true |
+
+## Contribution
+
+Clone this repository to your machine :
+
+``` bash
+git clone https://github.com/jestrux/articulate.git
+```
+
+Install dependencies with npm :
+
+``` bash
 npm install
 ```
 
-`npm run build` builds the library to `dist`, generating three files:
+## Included Commands
 
-* `dist/how-long-till-lunch.cjs.js`
-    A CommonJS bundle, suitable for use in Node.js, that `require`s the external dependency. This corresponds to the `"main"` field in package.json
-* `dist/how-long-till-lunch.esm.js`
-    an ES module bundle, suitable for use in other people's libraries and applications, that `import`s the external dependency. This corresponds to the `"module"` field in package.json
-* `dist/how-long-till-lunch.umd.js`
-    a UMD build, suitable for use in any environment (including the browser, as a `<script>` tag), that includes the external dependency. This corresponds to the `"browser"` field in package.json
-
-`npm run dev` builds the library, then keeps rebuilding it whenever the source files change using [rollup-watch](https://github.com/rollup/rollup-watch).
-
-`npm test` builds the library, then tests it.
-
-## Variations
-
-* [babel](https://github.com/rollup/rollup-starter-lib/tree/babel) — illustrates writing the source code in ES2015 and transpiling it for older environments with [Babel](https://babeljs.io/)
-* [buble](https://github.com/rollup/rollup-starter-lib/tree/buble) — similar, but using [Bublé](https://buble.surge.sh/) which is a faster alternative with less configuration
-* [TypeScript](https://github.com/rollup/rollup-starter-lib/tree/typescript) — uses [TypeScript](https://www.typescriptlang.org/) for type-safe code and transpiling
-
-
-
-## License
-
-[MIT](LICENSE).
+|Command|Description|
+|--|--|
+|`yarn dev`| Run dev server |
+|`yarn build`| Build for production |
