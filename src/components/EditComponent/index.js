@@ -78,7 +78,7 @@ export default function EditComponent({opened = false, selectedElement, onChange
 	}
 
     return (
-        <div class={`flex fixed inset-0 z-999 ${!opened && 'pointer-events-none'}`}>
+        <div class={`flex fixed inset-0 z-50 z-999 ${!opened && 'pointer-events-none'}`}>
             <div className={`bg-black bg-opacity-25 fixed inset-0 transition ${!opened && 'opacity-0'}`}
                 onClick={onClose}></div>
                 

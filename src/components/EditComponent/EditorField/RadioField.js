@@ -14,11 +14,19 @@ export default function RadioField({field, onChange}){
         );
     }
 
+    function renderColorChoice(color, selected){
+        return `
+            <span class="rounded-full bg-gray-500 inline-block p-0.5" style="width: 30px; height: 30px; background: ${color}">
+                <span class="border-2 border-${selected ? 'white' : 'transparent'} rounded-full w-full h-full block"></spa>
+            </span>
+        `;
+    }
+
     function renderChoices(){
         return (
             <div class="flex items-center text-md text-gray-700 space-x-3">
                 { 
-                    choices.map(choice => {
+                    choices.map((choice, index) => {
                         const selected = choice == value;
                         const randomName = (Math.random() * 1e32).toString(36);
 
@@ -31,6 +39,20 @@ export default function RadioField({field, onChange}){
                                 </label>
                             )
                         }
+                        else if(field.choiceType == "color"){
+                            let color = choice;
+                            if(field.colors)
+                                color = field.colors[index];
+
+                            return (
+                                <label class="cursor-pointer">
+                                    <input class="hidden" type="radio" name={randomName} checked={selected} value={choice} onChange={onChange} />
+
+                                    {  h( "span", { innerHTML: renderColorChoice(color, selected) }) }
+                                </label>
+                            )
+                        }
+
                          
                         return renderChoice(choice, selected, randomName);
                     })

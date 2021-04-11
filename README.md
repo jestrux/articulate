@@ -82,7 +82,7 @@ Component editor can be used to edit components. Now while this is intended to w
 Here's how you can use the `ComponentEditor`
 
 ```html
-<script src="path/to/field-editor.js"></script>
+<script src="path/to/component-editor.js"></script>
 <script type="module">
     import ImageGrid from "./image-grid-component.js";
     window.ImageGrid = ImageGrid;
@@ -105,6 +105,53 @@ Here's how you can use the `ComponentEditor`
     });
 </script>
 ```
+#### Other Customizations
+
+|Prop|Description|Default|
+|--|--|--|
+|`onComponentSaved`| If set, a submit button will be shown at the bottom of all fields and will call this function when clicked | null |
+
+
+### FieldEditor
+
+![Field editor](/screenshots/field-editor.gif?raw=true "Field editor")
+
+Field Editor is used to edit sinlge fields, to do that pass an object of the field properties such as label and type. The type can be `text`, `long text`, `image`, `link`, `choice`, `radio` or `boolean`.
+
+Here's how you can use the `FieldEditor`
+
+```html
+<button onclick="editFunExperiencesCard(event)">
+    Edit Card Background
+</button>
+
+<script src="path/to/field-editor.js"></script>
+<script>
+    const { editField } = new ArticulateFieldEditor();
+
+    function editFunExperiencesCard(event){
+        let card = event.target;
+        if(!card.classList.contains('funExperiencesCard'))
+            card = card.closest('.funExperiencesCard');
+        
+        const field = {
+            label: "Fun Experiences Card",
+            type: "radio",
+            choiceType: "color",
+            choices: ["black", "silver", "burlywood", "mediumaquamarine", "darksalmon", "cornflowerblue", "peachpuff", "cadetblue", "lavender", "skyblue", "wheat"],
+            value: card.style.backgroundColor,
+            autoSave: true
+        }
+
+        editField(field, (value) => {
+            if(!value) return;
+
+            card.style.backgroundColor = value;
+            card.style.color = value == "black" ? "white" : "black";
+        });
+    }
+</script>
+```
 
 The code above and the gif demo was captured from the content-editor demo [here 👉](/src/demos/content-editor/index.html).
 
@@ -112,78 +159,44 @@ The code above and the gif demo was captured from the content-editor demo [here 
 
 |Prop|Description|Default|
 |--|--|--|
-|`onComponentSaved`| Callback for when the component save button is clicked | null |
+|`choiceType`| If set to color, and type is radio, the radio buttons will look like color  | null |
+|`colors`| If you want to have different values for value and displayed color | null |
+|`autoSave`| If set to true, field editor will automaticlly close when any change is made | false |
+|`onSaveCustomField`| If set, a submit button will be shown at the bottom and will call this function when clicked | null |
 
 
-Most times however, you'll probably be working with custom components, to see an example of custom components, see the example code below.
+## Full Demos
 
-
-```html
-<button onclick="addScreen()">
-    Add Screen
-</button>
-
-<script type="module" src="path/to/articulate.js"></script>
-
-<script type="module">
-    // Import your components
-    import * as TriviaTemplates from './trivia-game/components';
-
-    window.addEventListener("load", () => {
-        window.articulate = new Articulate("#screens", {
-            lean: true,
-            editOnFocus: true,
-            // tell articulate use your components instead of the default components
-            uiElements: {...TriviaTemplates},
-            uiElements: {...TriviaTemplates},
-            className: "TriviaCard"
-        });
-    });
-</script>
-
-<script>
-    function addScreen(){
-        if(articulate)
-            articulate.add();
-    }
-</script>
-```
-
-This code was taken from the trivia code game demo found [here](/public/demos/trivia-game/index.html) and which could be used to make something that looks like this 👇
+### Trivia Game Creator
 
 ![Nerd Trivia](/screenshots/nerd-trivia.jpg?raw=true "Nerd Trivia")
 
+Show case of using the full Articulate to create screens for a trivia game based on three preset templates.
 
-If instead you want to add your components on top of the default articulate copmonents, you can do that by using `extend` like so 👇
+See the code here: [here 👉](/src/demos/trivia-game/index.html).
 
-```javascript
-new Articulate("#article", {
-    extend: {
-        uiElements: { BcCtaBanner }
-    }
-});
-```
 
-You can see the rest of the code above [here](/index.html)
+### Inline Content Editor
 
-#### Other Customizations
+![Content Editor](/screenshots/content-editor.jpg?raw=true "Content Editor")
 
-|Prop|Description|Default|
-|--|--|--|
-|`editOnFocus`| Whether to edit on focus or when edit button is clicked | true |
+See how field and component editors can be used(with some imagination 😅) to change a site's content and layouts inline.
+
+See the code here: [here 👉](/src/demos/content-editor/index.html).
+
 
 ## Contribution
 
 Clone this repository to your machine :
 
 ``` bash
-git clone https://github.com/jestrux/articulate.git
+git clone https://github.com/jestrux/articulate-preact.git
 ```
 
-Install dependencies with npm :
+Install dependencies with yarn :
 
 ``` bash
-npm install
+yarn
 ```
 
 ## Included Commands

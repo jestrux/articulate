@@ -5,8 +5,8 @@
     <title>Articulate Demos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="../dist/umd/field-editor.css" type="text/css">
-    <link rel="stylesheet" href="../dist/umd/component-editor.css" type="text/css">
+    
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet" />
 </head>
 <body>
     <header class="absolute top-0 inset-x-0 flex items-center justify-center z-50">
@@ -86,14 +86,16 @@
         <div class="mt-6 max-w-5xl mx-auto">
             <div class="relative z-10 mb-16 text-center">
                 <p class="text-3xl leading-relaxed max-w-2xl mx-auto font-light">
-                    Click any of the images or text items below to see Articulate's single field editor in action
+                    Click any of the images, text items or the container below to see Articulate's field editor in action.
                 </p>
     
                 <!-- <button class="mt-6 border-2 uppercase border-black border-opacity-30 text-fancy font-semibold shadow-sm bg-transparent text-white text-sm py-2 px-6 rounded">
                     Turn On Edit Mode
                 </button> -->
             </div>
-            <div class="relative z-10 rounded-xl px-8 shadow-lg" style="color: white; background-color: #252525;">
+            <div class="funExperiencesCard relative z-10 rounded-xl px-8 shadow-lg" style="color: white; background-color: black;"
+                onclick="editFunExperiencesCard(event)"
+            >
                 <div class="flex">
                     <div class="max-w-xs -mr-8 py-10 flex flex-col items-start justify-between">
                         <div>
@@ -490,10 +492,12 @@
         </div>
     </section>
 
-    <script src="../dist/umd/field-editor.js"></script>
-    <script src="../dist/umd/component-editor.js"></script>
-    <script src="assets/p5.min.js"></script>
-    <script src="assets/sketch.js"></script>
+    <script src="../../dist/umd/field-editor.js"></script>
+    <script src="../../dist/umd/component-editor.js"></script>
+
+    <!-- For the deco graph on the fun experiences section -->
+    <script src="../assets/p5.min.js"></script>
+    <script src="../assets/sketch.js"></script>
 
     <script>
         const { editField } = new ArticulateFieldEditor();
@@ -501,6 +505,28 @@
             const sineCanvas = document.querySelector("#defaultCanvas0");
             document.querySelector("#sineCanvas").appendChild(sineCanvas);
         });
+
+        function editFunExperiencesCard(event){
+            let card = event.target;
+            if(!card.classList.contains('funExperiencesCard'))
+                card = card.closest('.funExperiencesCard');
+            
+            const field = {
+                label: "Fun Experiences Card",
+                type: "radio",
+                choiceType: "color",
+                choices: ["black", "silver", "burlywood", "mediumaquamarine", "darksalmon", "cornflowerblue", "peachpuff", "cadetblue", "lavender", "skyblue", "wheat"],
+                value: card.style.backgroundColor,
+                autoSave: true
+            }
+
+            editField(field, (value) => {
+                if(!value) return;
+
+                card.style.backgroundColor = value;
+                card.style.color = value == "black" ? "white" : "black";
+            });
+        }
 
         document.querySelectorAll("[editable]").forEach(el => {
             const derivedValues = {
@@ -527,6 +553,8 @@
                 focusableEl.classList.add("ring-4");
 
                 e.preventDefault();
+                e.stopPropagation();
+
                 editField(
                     field,
                     (value) => {
