@@ -190,7 +190,7 @@ See the code here: [here 👉](/src/demos/content-editor/index.html).
 Clone this repository to your machine :
 
 ``` bash
-git clone https://github.com/jestrux/articulate-preact.git
+git clone https://github.com/jestrux/articulate.git
 ```
 
 Install dependencies with yarn :
