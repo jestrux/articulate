@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <button class="m-5 py-1 px-3 border-2 rounded-full" onclick="addSlide()">New Slide</button>
+
+    <div class="h-scree fle flex-co items-center pb-12">
+        <div class="w-full flex items-center justify-center h-screen px-8 overflow-x-auto">
+            <div class="rounded-xl overflow-hidden flex flex-row-reverse
+                p-5 sw-1/2 sh-1/2 bg-black
+            ">
+                <div class="flex flex-col justify-center bg-black text-white p-8 flex-1">
+                    <h3 class="text-2xl font-semibold mb-3">
+                        Main Focus
+                    </h3>
+                    <p class="text-sm leading-loose">
+                        <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti consequuntur ipsa fuga nihil ducimus ipsam quam, libero aliquid nostrum quo alias deleniti aut reprehenderit consequatur magnam odio? Amet, explicabo? -->
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti consequuntur...
+                    </p>
+                </div>
+                <div class="flex-shrink-0 relative overflow-hidden 
+                    rounded-xl sw-1/2 w-32
+                ">
+                    <img class="absolute w-full h-full object-cover" src="https://images.unsplash.com/photo-1587554801471-37976a256db0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNjE2NXwxfDF8YWxsfDE3fHx8fHx8Mnx8MTYyMDIwNzE5Mg&ixlib=rb-1.2.1&q=80&w=800" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slides"></div>
+    
+    <script src="../../dist/umd/articulate.js"></script>
+    
+    <script type="module">
+        import ImageSlide from './templates/SlideWithImage.js';
+
+        window.addEventListener("load", () => {
+            window.articulate = new Articulate("#slides", {
+                unsplashClientId: "17ef130962858e4304efe9512cf023387ee5d36f0585e4346f0f70b2f9729964",
+                uiElements: {ImageSlide},
+                wrapperClass: "grid grid-cols-4 gap-3",
+                itemClass: "relative TriviaCard",
+            });
+        });
+    </script>
+
+    <script>
+        function addSlide(){
+            articulate.pickComponent();
+        }
+    </script>
+</body>
+
+</html>
