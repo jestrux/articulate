@@ -1,0 +1,143 @@
+.bc-quill-editor {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.bc-quill-editor *:focus{
+    outline: none;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h1,
+.bc-quill-editor .ql-snow .ql-editor h2{
+    font-weight: bold !important;
+}
+
+.bc-quill-editor .ql-container.ql-snow {
+    border: none !important;
+}
+
+.bc-quill-editor .ql-editor {
+    min-height: 0 !important;
+    padding: 0 !important;
+}
+
+.bc-quill-editor .ql-picker:not(.ql-background) {
+    top: 0 !important;
+}
+
+.bc-quill-editor .ql-snow.ql-toolbar {
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -36px;
+    left: 0;
+    background: #eee;
+    border-radius: 3px;
+    display: inline-flex !important;
+    border: none !important;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    height: 40px;
+    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+}
+
+.bc-quill-editor:not(.focused) .ql-snow.ql-toolbar {
+    opacity: 0;
+    transition: none;
+}
+
+.bc-quill-editor .ql-snow.ql-toolbar .ql-formats {
+    margin: 0 !important;
+    margin-right: 15px !important;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h2,
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-family: "Bariol", sans-serif;
+    color: #444;
+    font-size: 1.7em !important;
+    margin-top: 0.3em !important;
+    margin-bottom: 0.1em !important;
+    max-width: 80%;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-size: 1.5em !important;
+}
+
+.bc-quill-editor .ql-snow.ql-toolbar .ql-formats:last-child {
+    margin-right: 8px !important;
+}
+
+.bc-quill-editor .ql-snow.ql-toolbar .ql-formats:first-child {
+    margin-left: 4px !important;
+}
+
+.bc-quill-editor .ql-snow.ql-toolbar button svg,
+.bc-quill-editor .ql-snow.ql-toolbar button svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.bc-quill-editor .ql-editor.ql-blank:before {
+    font-style: normal !important;
+    top: 3px;
+    left: 0 !important;
+    right: auto !important;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* INLINE EDITOR */
+.bc-quill-editor .ql-snow .ql-editor h2,
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-family: "Bariol", sans-serif;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-size: 1.5em !important;
+}
+
+.bc-quill-editor .ql-snow .ql-editor p {
+    font-family: OpenSans, sans-serif !important;
+}
+
+.bc-quill-editor .ql-editor.ql-blank:before {
+    font-family: OpenSans, sans-serif !important;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h2,
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-family: "Bariol", sans-serif;
+    color: #444;
+    font-size: 1.7em !important;
+    margin-top: 0.3em !important;
+    margin-bottom: 0.1em !important;
+    max-width: 80%;
+}
+
+.bc-quill-editor .ql-snow .ql-editor h3 {
+    font-size: 1.5em !important;
+}
+
+.bc-quill-editor .ql-snow .ql-editor p {
+    font-family: Caudex, serif !important;
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    color: #000 !important;
+}
+
+.bc-quill-editor .ql-editor.ql-blank:before {
+    content: "Start writing here";
+    font-style: normal !important;
+    top: 4px;
+    left: 0 !important;
+    right: auto !important;
+    font-family: Caudex, serif !important;
+    font-size: 1.1rem;
+    color: #bbb;
+}
+
+.articulate-element{
+    margin-bottom: 3rem;
+}

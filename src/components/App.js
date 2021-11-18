@@ -32,11 +32,13 @@ export default function App({articulateRef}){
         if(!articulateRef.elements || !articulateRef.elements.length || !element || !element.id)
             return;
             
-        articulateRef.elements = articulateRef.elements.filter(({id}) => id != element.id);
+        const newElements = articulateRef.elements.filter(({id}) => id != element.id);
+        articulateRef.elements = newElements;
 
         if(selectedElement && element.id == selectedElement.id)
             setSelectedElement(null);
 
+        setElements(newElements);
         handleElementsChanged();
     }
 
