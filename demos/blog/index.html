@@ -15,36 +15,16 @@
         <div id="article"></div>
 
         <button class="border border-gray-400 text-gray-600 py-1 px-6 rounded-full" onclick="addItem()">
-            Add Block
+            Add Section
         </button>
     </div>
 
     <script src="../../dist/umd/articulate.js"></script>
     <script type="module">
-        import SampleBlog from "./sample_blog.js";
-        import AirBnBanner from "./AirBnBanner/index.js";
-        import TailwindPoster from "./TailwindPoster/index.js";
-
+        import SampleBlog from "./SampleBlog.js";
         const { pickComponent } = new Articulate("#article", {
-            // elements: SampleBlog,
-            // elements: [
-            //     {
-            //         "component":"BcText",
-            //         "options":{
-            //             "text":"",
-            //             "default":"Start writting here...",
-            //         },
-            //         "label":"Text 3",
-            //         "id":"20wff9rnb01s"
-            //     },
-            // ],
             editOnFocus: true,
-            extend: {
-                uiElements: { 
-                    AirBnBanner,
-                    TailwindPoster
-                }
-            }
+            elements: SampleBlog
         });
 
         window.addItem = pickComponent;

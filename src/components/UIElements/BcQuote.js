@@ -32,8 +32,8 @@ BcQuote.doRender = function(options) {
 
     return `
         <blockquote class="border-l-4 px-4 border-blue-500">
-            <span class="block text-3xl font-light">${options.text}</span>
-            <span class="mt-1 block">${owner}</span>
+            <span class="block text-xl leading-relaxed font-light">${options.text}</span>
+            <span class="mt-1 block opacity-50">${owner}</span>
         </blockquote>
     `;
 }
