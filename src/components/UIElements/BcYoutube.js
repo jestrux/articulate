@@ -33,16 +33,16 @@ BcYoutube.props = {
       //   defaultValue: 'Video caption goes here.',
       //   type: 'text'
       // },
-      width: {
-        defaultValue: "wide",
-        type: 'choice',
-        choices: ['normal', 'wide', 'full']
-      },
-      controls: {
-        defaultValue: true,
-        type: 'choice',
-        choices: [true, false]
-      },
+    //   width: {
+    //     defaultValue: "wide",
+    //     type: 'choice',
+    //     choices: ['normal', 'wide', 'full']
+    //   },
+    //   controls: {
+    //     defaultValue: true,
+    //     type: 'choice',
+    //     choices: [true, false]
+    //   },
       // ,
       // type: {
       //   defaultValue: "simple",

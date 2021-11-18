@@ -8,7 +8,7 @@ BcText.icon = '<svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h
 
 BcText.props = {
     text: {
-        defaultValue: 'Enter your text here',
+        defaultValue: "<p>And so Jack went up the beanstalk in a haste, seemingly <em>unaware</em> of the <strong>perils</strong> that awaited ahead.</p>",
         type: 'long-text',
         optional: true
     }
@@ -20,7 +20,7 @@ BcText.doRender = function(options) {
 
 BcText.preview = function () {
     return BcText.doRender({
-        text: 'Enter your text here'
+        text: "<p>And so Jack went up the beanstalk in a haste, seemingly <em>unaware</em> of the <strong>perils</strong> that awaited ahead.</p>"
     });
 }
 

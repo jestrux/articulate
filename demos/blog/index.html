@@ -18,6 +18,11 @@
             outline: none;
         }
 
+        .bc-quill-editor .ql-snow .ql-editor h1,
+        .bc-quill-editor .ql-snow .ql-editor h2{
+            font-weight: bold !important;
+        }
+
         .bc-quill-editor .ql-container.ql-snow {
             border: none !important;
         }
@@ -90,7 +95,7 @@
             top: 3px;
             left: 0 !important;
             right: auto !important;
-            font-size: 1.1em;
+            font-size: 1.1rem;
             color: #ccc;
         }
 
@@ -128,44 +133,62 @@
 
         .bc-quill-editor .ql-snow .ql-editor p {
             font-family: Caudex, serif !important;
-            font-size: 1.1em !important;
+            font-size: 1.1rem !important;
+            line-height: 1.8 !important;
             color: #000 !important;
         }
 
         .bc-quill-editor .ql-editor.ql-blank:before {
+            content: "Start writing here";
             font-style: normal !important;
             top: 4px;
             left: 0 !important;
             right: auto !important;
             font-family: Caudex, serif !important;
-            font-size: 1.1em;
-            color: #ccc;
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .articulate-element{
+            margin-bottom: 3rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="max-w-5xl mx-auto py-12">
-        <div class="h-96 rounded-lg overflow-hidden bg-gray-200 mb-8"></div>
-
-        <div class="prose mb-12">
-            <h2>AFAfa</h2>
-        </div>
-
+    <div class="max-w-3xl mx-auto py-12">
         <div id="article"></div>
 
-        <button class="border bg-blue-500 text-white py-1 px-6 rounded-full" onclick="addItem()">Add Item</button>
+        <button class="border border-gray-400 text-gray-600 py-1 px-6 rounded-full" onclick="addItem()">
+            Add Block
+        </button>
     </div>
 
     <script src="../../dist/umd/articulate.js"></script>
     <script type="module">
         import SampleBlog from "./sample_blog.js";
-        console.log(SampleBlog);
+        import AirBnBanner from "./AirBnBanner/index.js";
+        import TailwindPoster from "./TailwindPoster/index.js";
+
         window.articulate1 = new Articulate("#article", {
-            elements: SampleBlog,
+            // elements: SampleBlog,
+            elements: [
+                {
+                    "component":"BcText",
+                    "options":{
+                        "text":"",
+                        "default":"Start writting here...",
+                    },
+                    "label":"Text 3",
+                    "id":"20wff9rnb01s"
+                },
+            ],
             editOnFocus: true,
             extend: {
-
+                uiElements: { 
+                    AirBnBanner,
+                    TailwindPoster
+                }
             }
         });
     </script>

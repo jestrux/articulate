@@ -1,11 +1,11 @@
-function VideoPoster(values){
+function TailwindPoster(values){
     this.values = values;
-    this.render = () => VideoPoster.doRender(this.values, this.images);
+    this.render = () => TailwindPoster.doRender(this.values, this.images);
 }
 
-VideoPoster.label = 'Image Grid';
+TailwindPoster.label = 'Image Grid';
 
-VideoPoster.props = {
+TailwindPoster.props = {
     subHeading: {
         type: "text",
         defaultValue: "How we'd build it"
@@ -33,11 +33,11 @@ VideoPoster.props = {
     },
     cameraCapture: {
         type: "image",
-        defaultValue: "./tw-poster/image-1.jpg"
+        defaultValue: "TailwindPoster/image-1.jpg"
     },
     codeScreenshot: {
         type: "image",
-        defaultValue: "./tw-poster/image-2.png"
+        defaultValue: "TailwindPoster/image-2.png"
     },
     flipScreenshots: {
         type: "boolean",
@@ -45,7 +45,7 @@ VideoPoster.props = {
     }
 }
 
-VideoPoster.doRender = function(options, images) {
+TailwindPoster.doRender = function(options, images) {
     const width = options.width == "Normal" ? "2/3" : "4/5";
     let screenshots = [
         options.cameraCapture,
@@ -56,7 +56,7 @@ VideoPoster.doRender = function(options, images) {
         screenshots = screenshots.reverse();
 
     return /*html*/`
-        <div class="relative bg-white overflow-hidden" style="width: 640px; height: 360px;">
+        <div class="relative bg-white border overflow-hidden mx-auto" style="width: 768px; height: 360px;">
             <!-- Top-left circle -->
             <div aria-hidden="true" class="absolute -top-16 -left-12 bg-${options.color}-200 rounded-full grid place-items-center"
                 style="width: 200px; height: 200px"
@@ -93,4 +93,10 @@ VideoPoster.doRender = function(options, images) {
     `;
 }
 
-export default VideoPoster;
+TailwindPoster.preview = function () {
+    return `    
+        <img class="w-full" src="TailwindPoster/preview.png" />
+    `;
+}
+
+export default TailwindPoster;

@@ -76,7 +76,10 @@ export default function App({articulateRef}){
             articulateRef.onElementAdded(element);
 
             setTimeout(() => {
-                document.querySelector(`#ArticulateElement${element.id}`).scrollIntoView()
+                var focusedElement = document.querySelector(`#ArticulateElement${element.id}`);
+                if(focusedElement){
+                    focusedElement.scrollIntoView()
+                }
             },20);
         }
         else{
