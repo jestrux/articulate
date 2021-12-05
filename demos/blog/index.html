@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>Articulate Blog Demo</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0">
     <link href="../../dist/cjs/articulate.css" rel="stylesheet" />
     <link href="./css/blog-editor.css" rel="stylesheet" />
 </head>
@@ -22,13 +20,21 @@
     <script src="../../dist/umd/articulate.js"></script>
     <script type="module">
         import SampleBlog from "./SampleBlog.js";
+        import TailwindPoster from "./TailwindPoster/index.js";
+        import AirBnBanner from "./AirBnBanner/index.js";
         const { pickComponent } = new Articulate("#article", {
             editOnFocus: true,
-            elements: SampleBlog
+            elements: SampleBlog,
+            // uiElements: {
+            //     TailwindPoster,
+            //     AirBnBanner,
+            // },
+            onElementsChanged: function(elements){
+                console.log("Elements: ", elements);
+            }
         });
 
         window.addItem = pickComponent;
     </script>
 </body>
-
 </html>
