@@ -6,7 +6,7 @@ Javascript library for dynamic content creation.
 ## Video Demos
 
 ### Block Editor
-![Block Editor Demo](https://www.youtube.com/watch?v=ZHO5LkB3R4o "Block Editor Demo")
+[Block Editor Demo](https://www.youtube.com/watch?v=ZHO5LkB3R4o "Block Editor Demo")
 
 ## The Basics
 In the beginning Articulate started as a generator for articles heavily inspired by medium and if you're working on a client website with blog or article content, this would be a nice thing you add to the blog creation page of the CMS.
