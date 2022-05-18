@@ -9,7 +9,7 @@ BcImage.icon = '<svg viewBox="0 0 24 24"><path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9
 
 BcImage.props = {
     source: {
-        defaultValue: "https://images.unsplash.com/photo-1504788363733-507549153474?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000",
+        defaultValue: "https://images.unsplash.com/photo-1652613614621-fe019ee1d4e5?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800",
         type: 'image'
     },
     caption: {
@@ -73,7 +73,7 @@ BcImage.doRender = function(options){
 
 BcImage.preview = function(){
     const options = {
-        source: "https://images.unsplash.com/photo-1504788363733-507549153474?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000",
+        source: "https://images.unsplash.com/photo-1652613614621-fe019ee1d4e5?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=800",
         caption: 'Park in poznan poland by Erik Witsoe',
         edgeCorners: "medium",
         maxHeight: "200px"
