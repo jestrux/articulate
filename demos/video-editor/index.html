@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Articulate Demos | Life at iPF Softwares</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0"
+		/>
+
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+
+	<body class="h-screen flex flex-col" x-data="videoPlayer">
+		<header
+			class="h-14 px-10 sbg-indigo-100 border-b flex items-center justify-between"
+		>
+			<h1 class="text-2xl font-serif font-black text-indigo-700">Voix</h1>
+
+			<div class="flex items-center">
+				<button
+					class="inline-flex items-center bg-transparent border border-indigo-700 shadow-sm text-indigo-700 text-sm py-1.5 px-3 rounded"
+				>
+					Export Video
+				</button>
+			</div>
+		</header>
+		<div class="flex-1 flex pt-6">
+			<div class="h-full aspect-[3/5] mx-auto relative flex flex-col">
+				<div
+					class="flex-1 shadow-lg relative rounded-lg overflow-hidden w-full h-full bg-black"
+				>
+					<template x-for="(segment, index) in segments">
+						<template x-if="segment.type == 'video'">
+							<video
+								:id="`video${segment.id}`"
+								class="absolute inset-0 w-full h-full object-cover"
+								:class="`${!segment.active && 'opacity-0'}`"
+								:src="segment.src"
+							></video>
+						</template>
+
+						<template x-if="segment.type == 'slides'">
+							<div :class="`${!segment.active && 'opacity-0'}`">
+								<template x-for="image in segment.images">
+									<img
+										class="absolute inset-0 w-full h-full object-cover"
+										:src="image"
+									/>
+								</template>
+							</div>
+						</template>
+					</template>
+				</div>
+
+				<div class="flex items-center py-5 mt-1">
+					<button class="w-9 h-9 rounded-full bg-indigo-600 text-xs font-medium flex items-center justify-center"
+						@click="togglePlay"
+					>
+						<svg x-show="!playing" viewBox="0 0 20 20" fill="currentColor" class="ml-0.5 w-5 h-5 text-white" stroke-linejoin="round">
+							<path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+						</svg>
+						
+						<svg x-show="playing" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-white" stroke-linejoin="round">
+							<path d="M5.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75A.75.75 0 007.25 3h-1.5zM12.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75a.75.75 0 00-.75-.75h-1.5z" />
+						</svg>						  
+					</button>
+	
+					<input
+						class="flex-1 ml-3 mr-1 text-indigo-500" 
+						style="accent-color: currentColor" 
+						type="range"
+						min="0" max="duration"
+						:value="currentTime"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="h-[150px] flex flex-col bg-indigo-50 py-3 px-10">
+			<div class="text-xl text-center text-indigo-800 mb-3">
+				~ Video Segments ~
+			</div>
+
+			<div class="flex-1 flex justify-center mb-1 gap-x-1">
+				<template x-for="(segment, index) in segments">
+					<button
+						class="block border-4 relative rounded-lg overflow-hidden shadow h-full aspect-video bg-black/10"
+						:class="`${segment.active ? 'border-indigo-600' : 'border-transparent'}`"
+						@click="selectSegment(segment.id)"
+					>
+						<template x-if="segment.type == 'video'">
+							<video
+								class="absolute inset-0 w-full h-full object-cover"
+								:src="segment.src"
+							></video>
+						</template>
+						<template x-if="segment.type == 'slides'">
+							<template x-for="image in segment.images">
+								<img
+									class="absolute inset-0 w-full h-full object-cover"
+									:src="image"
+								/>
+							</template>
+						</template>
+					</button>
+				</template>
+			</div>
+		</div>
+
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script>
+			window.addEventListener("alpine:init", () => {
+				Alpine.data("videoPlayer", () => ({
+					playing: false,
+					duration: 5000,
+					currentTime: 0,
+					segments: [
+                        {
+							id: 1,
+							type: "video",
+							src: "welcome.mp4",
+						},
+                        {
+							id: 2,
+							type: "video",
+							src: "team-building.mp4",
+						},
+                        {
+							id: 3,
+							type: "video",
+							src: "waterfalls.mp4",
+						},
+                        {
+							id: 4,
+							type: "slides",
+							images: [
+								"camping-1.jpg",
+								"camping-2.jpg",
+							],
+							duration: 1000
+						}
+					],
+					get activeSegment(){
+						return this.segments.find(({active}) => active);
+					},
+					get activeVideo(){
+						if(this.activeSegment.type == "video")
+							return document.querySelector("#video" + this.activeSegment.id);
+
+						return null;
+					},
+					togglePlay(){
+						this.playing = !this.playing;
+
+						if(this.activeVideo){
+							this.activeVideo.currentTime = 0;
+							this.activeVideo.play();
+						}
+					},
+					selectSegment(segmentId) {
+						this.segments = this.segments.map(s => {
+							s.active = s.id == segmentId;
+
+							return s;
+						});
+					}
+				}));
+			});
+		</script>
+		<script src="../../dist/umd/field-editor.js"></script>
+		<script src="../../dist/umd/component-editor.js"></script>
+	</body>
+</html>
