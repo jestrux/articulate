@@ -9,7 +9,7 @@ BcAlert.icon = '<svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2
 BcAlert.props = {
     type: {
         defaultValue: 'info',
-        type: 'choice',
+        type: 'radio',
         choices: ['info', 'warning', 'error']
     },
     title: {

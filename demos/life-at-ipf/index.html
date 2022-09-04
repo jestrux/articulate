@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Articulate Demos | Life at iPF Softwares</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0"
+		/>
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="https://ipfsoftwares.com/css/Slider.css" />
+
+		<style>
+			.Slider .SlideItem:not(.current) {
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 3s ease-out, transform 0.5s ease-out;
+			}
+
+			.Slider .SlideItem.current {
+				transition: opacity 1.5s ease-out 0.15s, transform 0.5s ease-out;
+			}
+
+			.Slider .SlideScroller {
+				transition: transform 1s cubic-bezier(0.62, 0.04, 0.24, 0.98)
+					0.15s;
+			}
+
+			.current-image {
+				filter: grayscale(5);
+			}
+
+			.Slider .SlideItem div {
+				overflow: hidden;
+			}
+
+			img,
+			video {
+				transition: transform 0.2s ease-out;
+				cursor: pointer;
+			}
+
+			img:hover,
+			video:hover {
+				transform: scale(1.1);
+			}
+
+			.SlideMovers {
+				pointer-events: none;
+			}
+		</style>
+	</head>
+
+	<body class="bg-[#010f1e] text-white">
+		<header
+			class="border-b border-white/20 absolute top-0 inset-x-0 flex items-center justify-center z-50 text-white text-opacity-70"
+		>
+			<ul
+				id="mainNavigation"
+				class="flex items-center space-x-8 text-xs tracking-widest font-semibold uppercase"
+				onclick="hideMobileNav()"
+			>
+				<li>
+					<a
+						href="#"
+						class="block px-3 py-4 text-dark hover:text-white"
+					>
+						Home
+					</a>
+				</li>
+
+				<li>
+					<a
+						href="#"
+						class="block px-3 py-4 hover:text-black text-blue-400 pointer-events-none"
+					>
+						About Us
+					</a>
+				</li>
+
+				<li>
+					<a
+						href="#"
+						class="block px-3 py-4 text-dark hover:text-white"
+					>
+						Featured Work
+					</a>
+				</li>
+
+				<li>
+					<a
+						href="#"
+						class="block px-3 py-4 text-dark hover:text-white"
+					>
+						Products & Services
+					</a>
+				</li>
+
+				<li>
+					<a
+						href="#"
+						class="block px-3 py-4 text-dark hover:text-white"
+					>
+						Contacts & Support
+					</a>
+				</li>
+			</ul>
+		</header>
+
+		<section class="pt-24 mt-8" x-data="sliderShow">
+			<div class="max-w-6xl mx-auto flex flex-col items-center">
+				<div class="relative z-20 text-center">
+					<h3 class="text-4xl leading-none font-serif font-bold mb-3">
+						Life at iPF Softwares
+					</h3>
+					<p
+						class="text-xl opacity-80 leading-loose max-w-3xl mx-auto"
+					>
+						Since 2015, we've been growing together as a family of
+						passionate individuals who constantly work smart, play
+						hard and evolve together.
+					</p>
+
+					<button
+						class="inline-flex items-center mt-5 border-2 border-blue-500 border-opacity-20 bg-blue-500 shadow-sm text-white text-base font-medium tracking-wide py-2.5 px-5 rounded-full"
+						onclick="editUsersImageGrid()"
+					>
+						Meet the iPF team
+					</button>
+				</div>
+
+				<div class="relative">
+					<div class="absolute inset-x-0 -bottom-1 z-20 flex">
+						<div
+							class="rounded-full bg-[#010f1e] p-1 inline-flex gap-x-3 mx-auto text-[9px] leading-none"
+						>
+							<template x-for="(button, index) in buttons">
+								<button
+									class="rounded-full border overflow-hidden h-3 w-3 transition-all duration-500"
+									:class="`${current == index ? 'bg-white border-white max-w-xs' : 'border-white/60 bg-transparent w-3 max-w-[16px]'}`"
+									@click="setCurrent(index)"
+								>
+									<!-- <span class="flex items-center h-full bg-white text-black px-1.5" x-show="current == index" x-text="button"></span> -->
+								</button>
+							</template>
+						</div>
+					</div>
+
+					<div
+						class="z-10 absolute -top-6 bottom-0.5 inset-x-0 overflow-hidden"
+					>
+						<div
+							class="relative h-full w-full flex items-center justify-center"
+						>
+							<div
+								id="theDot"
+								class="bg-white rounded-full absolute w-32 h-32"
+                                style="transform: translateY(250px) scale(0.15); opacity: 1"
+							></div>
+							<span id="theText" class="text-black opacity-0 z-10 text-xs leading-none tracking-widest uppercase" x-text="buttons[current]"></span>
+						</div>
+					</div>
+
+					<div
+						id="usersImageGridWrapper"
+						class="relative overflow-hidden"
+						style="margin-top: -3vh"
+					>
+						<div
+							class="border border-white/80 absolute -left-[25vw] bottom-[50vh] bg-[#010f1e] w-[150vw] h-[300vh] rounded-full z-10"
+						></div>
+						<div
+							class="border border-white/80 absolute -left-[25vw] -bottom-[215vh] bg-[#010f1e] w-[150vw] h-[220vh] rounded-full z-10"
+						></div>
+						<div
+							id="desktopGallery"
+							class="hidden md:block overflow-hidden w-screen bg-white/80 border-white/80 border-t border-b"
+						>
+							<div class="flex" style="height: 62vh">
+								<div
+									class="h-full flex-shrink-0 grid grid-cols-12 gap-x-0.5 items-end"
+								>
+									<div
+										class="col-span-2 h-full"
+										:class="`${currentImage == 'liz' && 'current-image'}`"
+										@click="setImage('liz')"
+									>
+										<video
+											muted
+											autoplay
+											loop
+											class="object-right object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/play2.mp4"
+										/>
+									</div>
+									<div class="col-span-2 h-full">
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/play6.jpg"
+											alt="iPF Softwares"
+										/>
+									</div>
+									<div class="col-span-2 h-full">
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/play4.jpg"
+											alt="iPF Softwares"
+										/>
+									</div>
+									<div
+										class="col-span-3 h-full"
+										:class="`${currentImage == 'kajanja' && 'current-image'}`"
+										@click="setImage('kajanja')"
+									>
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/play.jpg"
+											alt="iPF Softwares"
+										/>
+									</div>
+									<div class="col-span-3 h-full">
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/playstation.jpg"
+											alt="iPF Softwares"
+										/>
+									</div>
+								</div>
+
+								<div
+									class="h-full flex-shrink-0 grid grid-cols-12 gap-x-0.5 items-end"
+								>
+									<div class="col-span-2 h-full">
+										<video
+											muted
+											autoplay
+											loop
+											class="object-right object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/learn.mp4"
+										></video>
+									</div>
+									<div class="col-span-2 h-full">
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/learn2.jpeg"
+											alt="iPF Softwares"
+										/>
+									</div>
+									<div class="col-span-2 h-full">
+										<img class="object-cover h-full w-full" src="https://ipfsoftwares.com/img/culture/learn4.jpeg" alt="iPF Softwares">
+									</div>
+									<div class="col-span-3 h-full">
+										<video
+											muted
+											autoplay
+											loop
+											class="object- object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/work.mp4"
+										></video>
+									</div>
+									<div class="col-span-3 h-full">
+										<img
+											class="object-cover h-full w-full"
+											src="https://ipfsoftwares.com/img/culture/work3.jpg"
+											alt="iPF Softwares"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://ipfsoftwares.com/js/Slider.js"></script>
+		<script>
+			window.addEventListener("alpine:init", () => {
+				Alpine.data("sliderShow", () => ({
+					buttons: [
+                        "play hard",
+						"work hard",
+						//"play", "learn"
+					],
+					current: 0,
+					setCurrent(index) {
+						this.current = index;
+
+                        playDot();
+
+                        setTimeout(() => {
+                            scrollCultureSliderTo(index);
+                        }, 1000);
+                        // }, 3250);
+					},
+                    currentImage: "",
+					setImage(image) {
+						this.currentImage =
+							this.currentImage == image ? null : image;
+					},
+				}));
+			});
+
+			window.addEventListener("load", () => {
+				// playDot();
+			});
+
+            var tl;
+			function playDot() {
+                if(tl){
+                    tl.restart();
+                    return;
+                }
+
+				tl = anime.timeline({
+					duration: 2000,
+				});
+
+				tl.add({
+					targets: "#theDot",
+					translateY: [250, 0],
+                    easing: "easeOutExpo",
+				});
+
+				tl.add({
+					targets: "#theDot",
+                    translateY: 0,
+					scale: 1,
+				}, '-=900');
+
+				tl.add({
+					targets: "#theText",
+                    easing: "linear",
+                    scale: [1.5, 1],
+                    opacity: 1,
+                    duration: 400
+				}, '-=1650');
+
+				tl.add({
+					targets: "#theDot",
+					scale: 20,
+                    opacity: 0,
+                    easing: "easeOutExpo",
+				}, '-=1200');
+
+				tl.add({
+					targets: "#theText",
+                    easing: "easeOutExpo",
+                    scale: 10,
+                    opacity: 0,
+				}, '-=2000');
+			}
+
+			const cultureSlider = new Slider("#desktopGallery > div", {
+				onChange(newIndex, newPercent) {
+					// const activeFilter = document.querySelector(
+					// 	"#cultureImagesFilter li.active"
+					// );
+					// if (activeFilter != null)
+					// 	activeFilter.classList.remove("active");
+					// if (newIndex != 0)
+					// 	cultureFilters[newIndex - 1].classList.add("active");
+				},
+			});
+
+			function scrollCultureSliderTo(index) {
+				cultureSlider.scrollSliderTo(index);
+			}
+		</script>
+		<script src="../../dist/umd/field-editor.js"></script>
+		<script src="../../dist/umd/component-editor.js"></script>
+	</body>
+</html>
