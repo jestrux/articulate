@@ -208,5 +208,5 @@ yarn
 
 |Command|Description|
 |--|--|
-|`yarn dev`| Run dev server |
+|`yarn dev`| Run dev server at localhost:10001 |
 |`yarn build`| Build for production |
